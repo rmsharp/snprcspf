@@ -1,8 +1,8 @@
 Package: snprcspf
 Type: Package
 Title: SNPRC SPF Colony Screening Data Software Tool Package
-Version: 0.0.299
-Date: 2017-05-18
+Version: 0.0.300
+Date: 2017-05-23
 Author: R. Mark Sharp <msharp@TxBiomed.org>
 Maintainer: R. Mark Sharp <msharp@TxBiomed.org>
 Description: Provides tools for working with SNPRC SPF Colony Screening Data.
