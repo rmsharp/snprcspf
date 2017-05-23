@@ -1,0 +1,11 @@
+SCMBranch=Development
+SCMRepository=Development/Mark/R/library/snprcspf/tests/testthat
+test_pdl_test_to_sqlmed_test.R;3343748667;3;1441852029;
+test_date_conversion.R;886473886;1;1445701165;
+test_remove_bn_and_dash_R.R;2976535639;1;1445701177;
+test_possible_dates_to_yyyymmdd.R;2591386543;1;1445457930;
+test_runproperties.R;678067977;7;1452898197;
+test_low_positive_detection.R;1448654738;1;1455897845;
+test_get_report_date_from_filename.R;1748280682;2;1455903722;
+test_get_id_from_sample.R;3549042750;2;1484595021;
+test_get_antigen_pairs.R;621776696;1;1485385258;

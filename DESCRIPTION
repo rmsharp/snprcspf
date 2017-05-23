@@ -1,0 +1,30 @@
+Package: snprcspf
+Type: Package
+Title: SNPRC SPF Colony Screening Data Software Tool Package
+Version: 0.0.299
+Date: 2017-05-18
+Author: R. Mark Sharp <msharp@TxBiomed.org>
+Maintainer: R. Mark Sharp <msharp@TxBiomed.org>
+Description: Provides tools for working with SNPRC SPF Colony Screening Data.
+Depends:
+    R (>= 3.2.1)
+Imports:
+    animalr,
+    lubridate,
+    readxl,
+    reshape2,
+    RODBC,
+    rmsutilityr,
+    sqldf,
+    stringi,
+    tm,
+    XLConnect,
+    XML
+Suggests:
+    knitr,
+    testthat,
+    lintr
+License: GPL-2
+LazyData: TRUE
+VignetteBuilder: knitr
+RoxygenNote: 6.0.1
