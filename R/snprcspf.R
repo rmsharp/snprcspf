@@ -1018,7 +1018,6 @@ get_combined <- function(conn, r_mfi_df, file) {
   combined_df <- data.frame()
   for (sample in unique(df$sample)) {
     repeated <- get_repeated_from_sample(sample)
-    #sample_date <- get_date_from_sample(conn, sample)
     for (row in 1:nrow(ag_pair)) {
       # cat(stri_c("sample: ", sample, "; df$sample: ", df$sample,
       #            ";\n df$name: ", df$name, ";\n ag_pair$ai[row]: ",
