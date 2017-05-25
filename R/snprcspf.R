@@ -2119,7 +2119,7 @@ luminex_agent_to_sqlmed_test_name <- function(luminex_agent) {
       "BV" = "HERPES B VIRUS",
       "STLV" = "STLV-1 AB",
       "Measles" = "MEASLES",
-      "Tcruzi" = "T. CRUZI AB")[luminex_agent])
+      "T_cruzi" = "T. CRUZI AB")[luminex_agent])
 }
 #' Returns a numeric vector of SqlMed test_id given a character
 #' vector of luminex_agent.
