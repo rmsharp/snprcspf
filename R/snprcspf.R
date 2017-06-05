@@ -1,9 +1,10 @@
 ## To install on LabKey server:
 ## install.packages("d:Labkey data/snprcspf_0.0.300.tar.gz", type = "source",
 ##                    repos = NULL, lib = "c:/R Library")
-## install.packages("Hmisc", type = "binary",
-##                  repos = "http://cran.us.r-project.org",
-##                  lib = "c:/R Library")
+## install.packages(
+## "Hmisc", type = "binary",
+## repos = "https://cran.revolutionanalytics.com",
+## lib = "c:/R Library")
 
 ## Update all R packages with:
 ##  update.packages(lib.loc = "c:/R library",
