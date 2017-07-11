@@ -59,10 +59,12 @@
 spf_odbcConnect <- function(spf_dsn) {
  odbcConnect(spf_dsn)
 }
-#' Returns a dataframe with assays whose last value is non-negative.
+#' Get dataframe of animals where the most recent assay was not negative.
 #'
 #' A PCR assay trumps an non-PCR assay so that if a PCR assay is negative and
 #' and non-PCR assay is non-negative, the animal is negative for that agent.
+#'
+#' @return A dataframe with assays whose last value are non-negative.
 #'
 #' @param sorted_df dataframe sorted values of all assays.
 #' @import stringi
