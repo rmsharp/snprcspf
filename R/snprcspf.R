@@ -70,7 +70,7 @@ spf_odbcConnect <- function(spf_dsn) {
 #' @import stringi
 #' @import sqldf
 #' @export
-still_pos <- function(sorted_df) {
+get_still_pos <- function(sorted_df) { # renamed still_pos()
   assay_pairs_df <- get_assay_pairs()
   still_pos_df <- data.frame()
   for (i in seq_along(assay_pairs_df$agent)) {
