@@ -789,13 +789,12 @@ get_col_names <- function(type) {
                 get_and_or_list(valid_cols), "."))
   }
   raw_cols <- c("HTLV-1/2", "SRV-2", "HVP-2", "BV glyco B", "rBV glycoB",
-                "Human IgG",
+                "Human IgG", "SIV gp120",
                 "SIV gp130", "SIV mac", "SRV gp-20", "rMeasles", "rChagas",
-                "wBAC",
-                "Goat anti-human IgG", "STLV p21")
+                "wBAC", "Goat anti-human IgG", "STLV p21")
   bead_cols <- c("Filename", "Animal ID", "HTLV-1/2", "STLV p21", "SRV-2",
                  "SRV gp-20", "HVP-2", "BV glyco B", "rBV glycoB", "SIV gp130",
-                 "SIV mac", "rMeasles", "rChagas")
+                 "SIV gp130", "SIV mac", "rMeasles", "rChagas")
   summary_cols <- c("Filename", "Animal.ID", "STLV", "SRV", "BV", "SIV",
                    "Measles", "T_cruzi")
   agent_cols <- c("SIV", "SRV", "BV", "STLV", "Measles", "T_cruzi")
@@ -895,19 +894,23 @@ apply_divisor <- function(mfi_df, divisors) {
 }
 #' Returns a dataframe with the agent and two antigens used to assay for it.
 #'
-#' Since only one antigen is used for Measles, it is repeated.
+#' Since only one antigen is used for Measles and T_cruzi, they are repeated.
 #'
+#' Charles River changed one of their beads without any warning.
+#' Specifically, they dropped SIV gp130 (region 34) and replaced it for
+#' SIV gp120 (region 63).
 #' @param antigens vector of antigens
 #'
 #' @export
 get_antigen_pairs <- function(antigens) {
   antigens <- unique(antigens)
   antigen_pairs <-
-    data.frame(agent = c("STLV", "SRV", "BV", "BV", "SIV", "Measles", "T_cruzi"),
+    data.frame(agent = c("STLV", "SRV", "BV", "BV", "SIV", "SIV", "Measles",
+                         "T_cruzi"),
                a1 = c("HTLV-1/2", "SRV-2", "BV glyco B", "rBV glycoB",
-                      "SIV gp130", "rMeasles", "rChagas"),
+                      "SIV gp120", "SIV gp130", "rMeasles", "rChagas"),
                a2 = c("STLV p21", "SRV gp-20", "HVP-2", "HVP-2",
-                      "SIV mac", "rMeasles", "rChagas"),
+                      "SIV mac", "SIV mac", "rMeasles", "rChagas"),
                stringsAsFactors = FALSE)
   tmp_pairs <- antigen_pairs[antigen_pairs$a1 %in% antigens, ]
   remaining_ag <- antigens[!antigens %in% tmp_pairs$a1]
