@@ -922,6 +922,15 @@ get_agents_and_antigen_pairs <- function() {
              a2 = c("STLV p21", "SRV gp-20", "HVP-2", "HVP-2",
                     "SIV mac", "SIV mac", "rMeasles", "rChagas"),
              stringsAsFactors = FALSE)
+  # labkey.selectRows(
+  #   baseUrl = "https://vger.txbiomed.org/labkey",
+  #   folderPath = "/SNPRC/Core Facilities/SPF Screen Workflow",
+  #   schemaName = "lists",
+  #   queryName = "agent_antigen_pairs",
+  #   viewName = "",
+  #   colFilter = NULL,
+  #   containerFilter = NULL, colNameOpt = "fieldname"
+  # )
 }
 #' Returns the list of test antigens
 #'
