@@ -788,16 +788,12 @@ get_col_names <- function(type) {
     stop(stri_c(type, " is not a valid column type name. Must be one of ",
                 get_and_or_list(valid_cols), "."))
   }
-  raw_cols <- c("HTLV-1/2", "SRV-2", "HVP-2", "BV glyco B", "rBV glycoB",
-                "Human IgG", "SIV gp120",
-                "SIV gp130", "SIV mac", "SRV gp-20", "rMeasles", "rChagas",
-                "wBAC", "Goat anti-human IgG", "STLV p21")
-  bead_cols <- c("Filename", "Animal ID", "HTLV-1/2", "STLV p21", "SRV-2",
-                 "SRV gp-20", "HVP-2", "BV glyco B", "rBV glycoB", "SIV gp130",
-                 "SIV gp130", "SIV mac", "rMeasles", "rChagas")
-  summary_cols <- c("Filename", "Animal.ID", "STLV", "SRV", "BV", "SIV",
-                   "Measles", "T_cruzi")
-  agent_cols <- c("SIV", "SRV", "BV", "STLV", "Measles", "T_cruzi")
+  control_cols <- c("Human IgG", "wBAC", "Goat anti-human IgG")
+  antigen_cols <- get_test_antigens()
+  raw_cols <- c(antigen_cols, control_cols)
+  bead_cols <- c("Filename", "Animal ID", antigen_cols)
+  agent_cols <- get_agents_and_antigen_pairs()$agent
+  summary_cols <- c("Filename", "Animal.ID", agent_cols)
 
   col_names_list <- list(
     raw = raw_cols,
@@ -904,14 +900,7 @@ apply_divisor <- function(mfi_df, divisors) {
 #' @export
 get_antigen_pairs <- function(antigens) {
   antigens <- unique(antigens)
-  antigen_pairs <-
-    data.frame(agent = c("STLV", "SRV", "BV", "BV", "SIV", "SIV", "Measles",
-                         "T_cruzi"),
-               a1 = c("HTLV-1/2", "SRV-2", "BV glyco B", "rBV glycoB",
-                      "SIV gp120", "SIV gp130", "rMeasles", "rChagas"),
-               a2 = c("STLV p21", "SRV gp-20", "HVP-2", "HVP-2",
-                      "SIV mac", "SIV mac", "rMeasles", "rChagas"),
-               stringsAsFactors = FALSE)
+  antigen_pairs <- get_agents_and_antigen_pairs()
   tmp_pairs <- antigen_pairs[antigen_pairs$a1 %in% antigens, ]
   remaining_ag <- antigens[!antigens %in% tmp_pairs$a1]
   remaining_ag <- remaining_ag[!remaining_ag %in% tmp_pairs$a2]
@@ -921,6 +910,32 @@ get_antigen_pairs <- function(antigens) {
   tmp3_pairs <- rbind(tmp_pairs, tmp2_pairs)
   data.frame(tmp3_pairs[!duplicated(tmp3_pairs), ], stringsAsFactors = FALSE,
              row.names = NULL)
+}
+#' Returns dataframe of possible antigen pairs and agents
+#'
+#' @export
+get_agents_and_antigen_pairs <- function() {
+  data.frame(agent = c("STLV", "SRV", "BV", "BV", "SIV", "SIV", "Measles",
+                       "T_cruzi"),
+             a1 = c("HTLV-1/2", "SRV-2", "BV glyco B", "rBV glycoB",
+                    "SIV gp120", "SIV gp130", "rMeasles", "rChagas"),
+             a2 = c("STLV p21", "SRV gp-20", "HVP-2", "HVP-2",
+                    "SIV mac", "SIV mac", "rMeasles", "rChagas"),
+             stringsAsFactors = FALSE)
+}
+#' Returns the list of test antigens
+#'
+#' Uses \code{get_agents_and_antigen_pairs()} to create the list of unique
+#' test antigens
+#'
+#' @export
+get_test_antigens <- function() {
+  antigen_pairs <- get_agents_and_antigen_pairs()
+  antigens <- c()
+  for (i in 1:nrow(antigen_pairs)) {
+    antigens <- c(antigens, antigen_pairs$a1[i], antigen_pairs$a2[i])
+  }
+  unique(antigens)
 }
 #' Returns  positive antigens based on low control value and a multiplier
 #'
