@@ -44,7 +44,7 @@
 ## Note the difference in spelling of the R library folder location parameter
 ## between the install.packages() and update.packages() functions.
 ## Update all R packages with:
-##  update.packages(lib.loc = "c:/R library",
+##  update.packages(lib.loc = "c:/R Library",
 ##                  repos = "https://cran.revolutionanalytics.com",
 ##                  ask = FALSE)
 ##
