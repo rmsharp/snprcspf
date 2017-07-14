@@ -792,7 +792,7 @@ get_col_names <- function(type) {
   antigen_cols <- get_test_antigens()
   raw_cols <- c(antigen_cols, control_cols)
   bead_cols <- c("Filename", "Animal ID", antigen_cols)
-  agent_cols <- get_agents_and_antigen_pairs()$agent
+  agent_cols <- unique(get_agents_and_antigen_pairs()$agent)
   summary_cols <- c("Filename", "Animal.ID", agent_cols)
 
   col_names_list <- list(
