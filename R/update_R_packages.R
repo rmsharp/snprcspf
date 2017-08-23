@@ -2,12 +2,11 @@
 get_deps <- function(path) {
   dcf <- read.dcf(file.path(path, "DESCRIPTION"))
   jj <- intersect(c("Depends", "Imports", "Suggests"), colnames(dcf))
-  val <- unlist(strsplit(dcf[, jj], ","), use.names=FALSE)
+  val <- unlist(strsplit(dcf[, jj], ","), use.names = FALSE)
   val <- gsub("\\s.*", "", trimws(val))
   val[val != "R"]
 }
-remove_these_str <- function (.str, expunge, ignore_case = FALSE)
-{
+remove_these_str <- function(.str, expunge, ignore_case = FALSE) {
   if (ignore_case) {
     tmp_str <- tolower(.str)
     tmp_expunge <- tolower(expunge)
