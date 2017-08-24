@@ -1,4 +1,14 @@
-## Updates R after new installation of R
+#!c:\Program^ Files\R\R-3.4.1\bin\x64\Rscript
+### Updates R after new installation of R
+##
+## This script will use Sys.info() to discover what system it is running on
+## and assign the source_path and lib_path values. However, command line
+## arguments can be used to override these using a command such as the
+## following:
+## RScript update_R_packages.R "/Users/msharp/Documents/Development/R/r_workspace/library/" "/Library/Frameworks/R.framework/Versions/3.4/Resources/library/"
+#' Get package dependencies
+#'
+#' Written by Josh O'Brien on stackoverflow on May 13 '15 at 21:42
 get_deps <- function(path) {
   dcf <- read.dcf(file.path(path, "DESCRIPTION"))
   jj <- intersect(c("Depends", "Imports", "Suggests"), colnames(dcf))
@@ -6,6 +16,11 @@ get_deps <- function(path) {
   val <- gsub("\\s.*", "", trimws(val))
   val[val != "R"]
 }
+#' Removed these strings
+#'
+#' Modified from rmsutilityr::remove_strings() by R. Mark Sharp. The
+#' modification was to remove a package dependency using the standard
+#' relational opporator "==" instead of stri_detect_regex().
 remove_these_str <- function(.str, expunge, ignore_case = FALSE) {
   if (ignore_case) {
     tmp_str <- tolower(.str)
@@ -21,10 +36,25 @@ remove_these_str <- function(.str, expunge, ignore_case = FALSE) {
   }
   .str[keep]
 }
-
-lib_path <- "c:/R Library/"
-lib_path <- "/Library/Frameworks/R.framework/Versions/3.4/Resources/library/"
-source_path <- "/Users/msharp/Documents/Development/R/r_workspace/library/"
+info <- Sys.info()
+if (toupper(info$nodename) == "VGER" | toupper(info$nodename) == "BOOMER") {
+  source_path <- "d:Labkey data/"
+  lib_path <- "c:/R Library/"
+} else {
+  lib_path <- "/Library/Frameworks/R.framework/Versions/3.4/Resources/library/"
+  source_path <- "/Users/msharp/Documents/Development/R/r_workspace/library/"
+}
+args <- commandArgs(trailingOnly = TRUE)
+if (length(args) == 2) {
+  source_path <- args[1]
+  lib_path <- args[2]
+  if (!length(list.files(path = source_path, pattern = ".*tar.gz")) > 0)
+    stop(paste0(source_path, " does not contain any package sources. ",
+                "I am assuming the path is incorrect"))
+  if (!file.exists(paste0(lib_path, "utils")))
+    stop(paste0(lib_path, " does not contain required R package 'utils'. ",
+                "I am assuming the path is incorrect."))
+}
 
 ## dependencies becomes the collection of packages needed to support our
 ## custom packages
