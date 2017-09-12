@@ -2579,7 +2579,9 @@ test_for_bleed_date <- function(snprc_id, bleed_date, file_name, conn,
                                     bleed_date[bad_date])), "."))
   }
 }
-#' Returns dataframe with animal Ids, cage location, bleed date, whether not a
+#' Read blood or dna sample file
+#'
+#' @returns dataframe with animal Ids, cage location, bleed date, whether not a
 #' blood sample was expected, whether or not a sample was received, and the
 #' Pool Id number if present for a single sample file.
 #'
@@ -2603,15 +2605,34 @@ read_sample_file <- function(file_name, conn, run_props, run_error) {
                                  pool_id = character(0))
   tmp_sample_df <- read_excel(file_name, col_names = TRUE)
   tmp_sample_df <- Filter(function(x)!all(is.na(x)), tmp_sample_df)
-  if (length(tmp_sample_df) == length(sample_df))
+  sample_col_names <- names(sample_df)
+  if (any("pool_id" %in% setdiff(sample_col_names, names(tmp_sample_df)))) {
+    pooled_samples <- FALSE
+  } else {
+    pooled_samples <- TRUE
+  }
+  if (length(tmp_sample_df) == length(sample_col_names)) {
     tmp_sample_df <- tmp_sample_df[ , -1] # remove unused row number
-  else if (!length(tmp_sample_df) == (length(sample_df) - 1)) {
+  } else if (pooled_samples &
+             !length(tmp_sample_df) == (length(sample_col_names) - 1)) {
     triggerError(stri_c("File: ", file_name,
                 " does not have the correct number of columns. ",
                 "It should have the following columns: ",
-                get_and_or_list(names(sample_df)), "."))
+                get_and_or_list(sample_col_names[-1]), "."))
+  } else if (!pooled_samples &
+             !length(tmp_sample_df) == (length(sample_df) - 2)) {
+    triggerError(
+      stri_c("File: ", file_name,
+             " does not have the correct number of columns. ",
+             "It should have the following columns: ",
+             get_and_or_list(sample_col_names[
+               c(-1, -length(sample_col_names))]), "."))
   }
-  names(tmp_sample_df) <- names(sample_df)[-1] # does not have file
+  if (!pooled_samples) {
+    tmp_sample_df$pool_id <- NA
+  }
+  names(tmp_sample_df) <- sample_col_names[-1] # does not have file
+
   tmp_sample_df <- data.frame(tmp_sample_df)
   tmp_sample_df <-
     tmp_sample_df[!is.na(tmp_sample_df$snprc_id), ]
