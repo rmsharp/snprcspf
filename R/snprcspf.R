@@ -2581,7 +2581,7 @@ test_for_bleed_date <- function(snprc_id, bleed_date, file_name, conn,
 }
 #' Read blood or dna sample file
 #'
-#' @returns dataframe with animal Ids, cage location, bleed date, whether not a
+#' @return dataframe with animal Ids, cage location, bleed date, whether not a
 #' blood sample was expected, whether or not a sample was received, and the
 #' Pool Id number if present for a single sample file.
 #'
