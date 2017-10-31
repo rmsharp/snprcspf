@@ -1,9 +1,13 @@
-## Updates R after new installation of R
+#' Updates R after new installation of R
+
+#' Get package dependencies
+#'
+#' Reads the DESCRIPTION file within the package structure
 get_deps <- function(path) {
   dcf <- read.dcf(file.path(path, "DESCRIPTION"))
   jj <- intersect(c("Depends", "Imports", "Suggests"), colnames(dcf))
   val <- unlist(strsplit(dcf[, jj], ","), use.names = FALSE)
-  val <- gsub("\\s.*", "", trimws(val))
+  val <- gsub("\\s.*", "", base::trimws(val))
   val[val != "R"]
 }
 remove_these_str <- function(.str, expunge, ignore_case = FALSE) {

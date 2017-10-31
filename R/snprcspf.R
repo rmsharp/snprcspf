@@ -1207,7 +1207,7 @@ get_combined <- function(conn, r_mfi_df, file) {
 #' one as was used to make the worksheet.
 #' @param sheet_name name of the worksheet to highlight.
 #' @param low_positive_controls_df dataframe with the low positive controls
-#' @import stats
+#' @importFrom stats complete.cases
 #' @import XLConnect
 #' @export
 format_luminex_results <- function(excel_file, .df,
