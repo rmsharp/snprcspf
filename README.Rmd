@@ -1,0 +1,21 @@
+---
+output: github_document
+---
+[![Rdoc](http://www.rdocumentation.org/badges/version/roxygen2)](http://www.rdocumentation.org/packages/roxygen2)
+[![Build Status](https://travis-ci.org/rmsharp/snprcspf.svg?branch=master)](https://travis-ci.org/rmsharp/snprcspf)
+[![codecov](https://codecov.io/gh/rmsharp/snprcspf/branch/master/graph/badge.svg)](https://codecov.io/gh/rmsharp/snprcspf)
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, echo = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "README-"
+)
+```
+
+
+```{r child = "vignettes/installation.Rmd", ref = "installation"}
+```
+

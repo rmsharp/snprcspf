@@ -24,6 +24,9 @@ Suggests:
     knitr,
     testthat,
     lintr
+Remotes:
+    rmsharp/animalr,
+    rmsharp/rmsutilityr
 License: GPL-2
 LazyData: TRUE
 VignetteBuilder: knitr
