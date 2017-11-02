@@ -8,6 +8,7 @@ before_install:
 r_github_packages:
   - jimhester/covr,
   - rmsharp/rmsutilityr
+  - rmsharp/animalr
 after_success:
   - Rscript -e 'covr::codecov()'
 sudo: false
