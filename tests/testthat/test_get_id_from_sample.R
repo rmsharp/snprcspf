@@ -1,7 +1,7 @@
 library(snprcspf)
 library(RODBC)
 library(rmsutilityr)
-conn <- odbcConnect("hellcat-miami-animal-sa")
+skip_on_travis(conn <- odbcConnect("hellcat-miami-animal-sa"))
 context("Get Ids from samples tests")
 samples1 <- c("ICL CNT High", "ICL CNT Low", "NHP CNT (ICL)", "Diluent CNT (ICL)",
               "31887 - 05/21/2014", "29461 - 05/28/2014", "30923 - 06/03/2014",
@@ -26,7 +26,7 @@ samples2 <- c("20161208-31543",
              "ICL CNT Low",
              "NHP CNT (ICL)",
              "Diluent CNT (ICL)")
-test_that("All sample formats with Ids produce Ids and those without do not", {
+skip_on_travis(test_that("All sample formats with Ids produce Ids and those without do not", {
   expect_equal(
     blank_fill_ids(get_id_from_sample(conn, samples1)), c(NA, NA, NA, NA,
                                           " 31887", " 29461", " 30923",
@@ -41,5 +41,5 @@ test_that("All sample formats with Ids produce Ids and those without do not", {
     blank_fill_ids(get_id_from_sample(conn, samples2)),
     c(" 31543", NA, " 31555", " 31650", " 31720", " 31785", " 31729",
       " 32623", " 33458", " 31848", NA, NA, NA, NA))
-})
-odbcClose(conn)
+}))
+skip_on_travis(odbcClose(conn))
