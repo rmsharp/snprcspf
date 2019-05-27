@@ -12,12 +12,12 @@ r_packages:
     - devtools
     - covr
     - rcmdcheck
-matrix:
-     include:
-         - os: osx
-           fortran: false
+#matrix:
+#     include:
+#         - os: osx
+#           fortran: false
 before_install:
-  - sudo R CMD javareconf
+#  - sudo R CMD javareconf
   - Rscript -e 'install.packages("rJava", type = "source")'
 after_success:
   - Rscript -e 'covr::codecov()'
@@ -36,4 +36,5 @@ env:
     - LINTR_COMMENT_BOT=false
 os:
   - osx
+  - linux
 warnings_are_errors: true
