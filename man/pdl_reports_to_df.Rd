@@ -4,8 +4,8 @@
 \alias{pdl_reports_to_df}
 \title{Returns dataframe with results from all report files in directory.}
 \usage{
-pdl_reports_to_df(base_directory, pdl_report_directory, start_year, end_year,
-  excluded_files = character(0))
+pdl_reports_to_df(base_directory, pdl_report_directory, start_year,
+  end_year, excluded_files = character(0))
 }
 \arguments{
 \item{base_directory}{path of base directory

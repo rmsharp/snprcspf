@@ -5,8 +5,8 @@
 \title{Returns a one record dataframe with the data from one assay record.}
 \usage{
 get_one_record_df(file_name, order_pk, print_date_tm, bill_po, request_num,
-  report_contact, received_date, report_date, order_comment, line_1, line_2,
-  col_boundaries)
+  report_contact, received_date, report_date, order_comment, line_1,
+  line_2, col_boundaries)
 }
 \arguments{
 \item{file_name}{name of file according to $meta$id}

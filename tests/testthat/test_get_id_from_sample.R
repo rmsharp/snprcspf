@@ -25,9 +25,23 @@ samples2 <- c("20161208-31543",
              "ICL CNT Low",
              "NHP CNT (ICL)",
              "Diluent CNT (ICL)")
+is_db_available <- function(dsn) {
+  tryCatch({odbcConnect(dsn)
+    TRUE},
+    warning = function(w) FALSE,
+    error = function(e) FALSE,
+    finally = odbcCloseAll())
+}
+skip_if_no_db <- function() {
+  if (!is_db_available("hellcat-miami-animal-sa")) {
+    skip("API not available")
+  }
+}
+
 test_that("All sample formats with Ids produce Ids and those without do not", {
   skip_on_travis()
   skip_on_cran()
+  skip_if_no_db()
   conn <- odbcConnect("hellcat-miami-animal-sa")
 
   expect_equal(

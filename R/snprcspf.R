@@ -1,3 +1,31 @@
+#' Returns the Ids in right blank filled and upper case animal Ids.
+#'
+#' @param ids character vector of animal Ids that may need to be transformed
+#' into the proper Id format.
+#' @param upper logical indicator of whether ids are to be forced to upper case
+#' @examples
+#' new_ids <- blank_fill_ids(c("12345", "1X1234", "1234","2 3456"))
+#' @import stringi
+#' @export
+blank_fill_ids <- function(ids, upper = TRUE) {
+  if (upper)
+    ids <- toupper(stri_trim_both(ids))
+  if (class(ids) == "factor")
+    ids <- as.character(ids)
+  for (i in seq_along(ids)) {
+    if (is.na(ids[i]))
+      next
+
+    if (stri_length(ids[i]) > 6 | stri_length(ids[i]) < 3)
+      warning(stri_c("Id size out of range. i is ", i,
+                     " stri_length(ids[[i]]) is ",
+                     stri_length(ids[[i]]),
+                     " and Id is ", ids[[i]]))
+    else
+      ids[[i]] <- sprintf("%6s", ids[[i]])
+  }
+  ids
+}
 #' Returns database connection object
 #'
 #' @param spf_dsn DSN for the SPF user
@@ -1144,110 +1172,111 @@ get_combined <- function(conn, r_mfi_df, file) {
                    "procedure_name", "procedure_id",
                    "test_name", "test_id", "agent", "assay_value")]
 }
-#' Returns Excel file name of file that has been formatted to highlight
-#' non-negative results in the sheet indicated.
-#'
-#' This highlights "I" and "P" results
-#' @param excel_file character vector with the name of the Excel file
-#' @param .df dataframe being used to guide highlighting. It is the same
-#' one as was used to make the worksheet.
-#' @param sheet_name name of the worksheet to highlight.
-#' @param low_positive_controls_df dataframe with the low positive controls
-#' @importFrom stats complete.cases
-#' @import XLConnect
-#' @export
-format_luminex_results <- function(excel_file, .df,
-                                   sheet_name = "final_result",
-                                   low_positive_controls_df) {
-  ## set-rows
-  ## format cells with highlighting, text wrapping, grey header, and column
-  ## specific borders
-  wb <- loadWorkbook(excel_file)
-  cs_positive <- createCellStyle(wb)
-  cs_indeterminate <- createCellStyle(wb)
-  cs_to_repeat <- createCellStyle(wb) # low positive control wells
-  cs_header <- createCellStyle(wb)
-  cs_border_header <- createCellStyle(wb)
+## ## Returns Excel file name of file that has been formatted to highlight
+## ## non-negative results in the sheet indicated.
+## ##
+## ## This highlights "I" and "P" results
+## ## @param excel_file character vector with the name of the Excel file
+## ## @param .df dataframe being used to guide highlighting. It is the same
+## ## one as was used to make the worksheet.
+## ## @param sheet_name name of the worksheet to highlight.
+## ## @param low_positive_controls_df dataframe with the low positive controls
+## ## @importFrom stats complete.cases
+## ## @import XLConnect
+## ## @export
+## format_luminex_results <- function(excel_file, .df,
+##                                    sheet_name = "final_result",
+##                                    low_positive_controls_df) {
+##   ## set-rows
+##   ## format cells with highlighting, text wrapping, grey header, and column
+##   ## specific borders
+##   wb <- loadWorkbook(excel_file)
+##   cs_positive <- createCellStyle(wb)
+##   cs_indeterminate <- createCellStyle(wb)
+##   cs_to_repeat <- createCellStyle(wb) # low positive control wells
+##   cs_header <- createCellStyle(wb)
+##   cs_border_header <- createCellStyle(wb)
+##
+##   ## set-wrap
+##   setWrapText(cs_positive, wrap = TRUE)
+##   setWrapText(cs_indeterminate, wrap = TRUE)
+##   setWrapText(cs_to_repeat, wrap = TRUE)
+##   setWrapText(cs_header, wrap = TRUE)
+##   setWrapText(cs_border_header, wrap = TRUE)
+##
+##   ## set-fill
+##   setFillPattern(cs_positive, fill = XLC$FILL.SOLID_FOREGROUND)
+##   setFillForegroundColor(cs_positive, color = XLC$COLOR.ROSE)
+##   setFillPattern(cs_indeterminate, fill = XLC$FILL.SOLID_FOREGROUND)
+##   setFillForegroundColor(cs_indeterminate, color = XLC$COLOR.CORNFLOWER_BLUE)
+##   setFillPattern(cs_to_repeat, fill = XLC$FILL.SOLID_FOREGROUND)
+##   setFillForegroundColor(cs_to_repeat, color = XLC$COLOR.LEMON_CHIFFON)
+##   setFillPattern(cs_header, fill = XLC$FILL.SOLID_FOREGROUND)
+##   setFillPattern(cs_border_header, fill = XLC$FILL.SOLID_FOREGROUND)
+##   setFillForegroundColor(cs_header, color = XLC$COLOR.GREY_25_PERCENT)
+##   setFillForegroundColor(cs_border_header, color = XLC$COLOR.GREY_25_PERCENT)
+##
+##
+##   ## make-matrices
+##   ## Include row offset for column label in Excel sheets
+##   positive_row <- matrix(data = rep(1:nrow(.df), each = ncol(.df)),
+##                          nrow = nrow(.df),
+##                          ncol = ncol(.df), byrow = TRUE) + 1L
+##   positive_col <- matrix(data = rep(1:ncol(.df), each = nrow(.df)),
+##                          nrow = nrow(.df),
+##                          ncol = ncol(.df))
+##   ##  positive_row <- positive_row[!is.na(.df)]
+##   ##  positive_col <- positive_col[!is.na(.df)]
+##   indeterminate_row <- positive_row
+##   indeterminate_col <- positive_col
+##   to_repeat_row <- positive_row
+##   to_repeat_col <- positive_col
+##
+##   positive <- data.frame(row = positive_row[.df == "P"],
+##                          col = positive_col[.df == "P"])
+##   indeterminate <- data.frame(row = indeterminate_row[.df == "I"],
+##                               col = indeterminate_col[.df == "I"])
+##   ## Include row offset for column label in Excel sheets
+##   well_rows <- ((1:nrow(.df)) + 1L)[.df[ , "wells"] %in%
+##                                low_positive_controls_df$wells]
+##   to_repeat <- data.frame(
+##     row = rep(well_rows, ncol(.df)),
+##     col = rep(1:ncol(.df), each = length(well_rows)))
+##
+##   positive <- positive[complete.cases(positive), ]
+##   indeterminate <- indeterminate[complete.cases(indeterminate), ]
+##
+##   ## set-style
+##   if (nrow(positive) > 0) {
+##     setCellStyle(wb, sheet = sheet_name, row = positive$row, col = positive$col,
+##                  cellstyle = cs_positive)
+##   }
+##   if (nrow(indeterminate) > 0) {
+##     setCellStyle(wb, sheet = sheet_name, row = indeterminate$row,
+##                col = indeterminate$col,
+##                cellstyle = cs_indeterminate)
+##   }
+##   if (nrow(to_repeat) > 0) {
+##     setCellStyle(wb, sheet = sheet_name, row = to_repeat$row,
+##                  col = to_repeat$col,
+##                  cellstyle = cs_to_repeat)
+##   }
+##   setCellStyle(wb, sheet = sheet_name, row = 1, col = seq_along(names(.df)),
+##                cellstyle = cs_header)
+##
+##   ## setCellStyle(wb, sheet = sheet_name, row = positive$row,
+##   ##              col = positive$col,
+##   ##              cellstyle = cs_border_positive)
+##   ## setCellStyle(wb, sheet = sheet_name, row = indeterminate$row,
+##   ##              col = indeterminate$col,
+##   ##              cellstyle = cs_border_indeterminate)
+##   setCellStyle(wb, sheet = sheet_name, row = 1, col = seq_along(names(.df)),
+##                cellstyle = cs_border_header)
+##   ## save-wb
+##   saveWorkbook(wb)
+##   excel_file
+## }
 
-  ## set-wrap
-  setWrapText(cs_positive, wrap = TRUE)
-  setWrapText(cs_indeterminate, wrap = TRUE)
-  setWrapText(cs_to_repeat, wrap = TRUE)
-  setWrapText(cs_header, wrap = TRUE)
-  setWrapText(cs_border_header, wrap = TRUE)
-
-  ## set-fill
-  setFillPattern(cs_positive, fill = XLC$FILL.SOLID_FOREGROUND)
-  setFillForegroundColor(cs_positive, color = XLC$COLOR.ROSE)
-  setFillPattern(cs_indeterminate, fill = XLC$FILL.SOLID_FOREGROUND)
-  setFillForegroundColor(cs_indeterminate, color = XLC$COLOR.CORNFLOWER_BLUE)
-  setFillPattern(cs_to_repeat, fill = XLC$FILL.SOLID_FOREGROUND)
-  setFillForegroundColor(cs_to_repeat, color = XLC$COLOR.LEMON_CHIFFON)
-  setFillPattern(cs_header, fill = XLC$FILL.SOLID_FOREGROUND)
-  setFillPattern(cs_border_header, fill = XLC$FILL.SOLID_FOREGROUND)
-  setFillForegroundColor(cs_header, color = XLC$COLOR.GREY_25_PERCENT)
-  setFillForegroundColor(cs_border_header, color = XLC$COLOR.GREY_25_PERCENT)
-
-
-  ## make-matrices
-  ## Include row offset for column label in Excel sheets
-  positive_row <- matrix(data = rep(1:nrow(.df), each = ncol(.df)),
-                         nrow = nrow(.df),
-                         ncol = ncol(.df), byrow = TRUE) + 1L
-  positive_col <- matrix(data = rep(1:ncol(.df), each = nrow(.df)),
-                         nrow = nrow(.df),
-                         ncol = ncol(.df))
-  ##  positive_row <- positive_row[!is.na(.df)]
-  ##  positive_col <- positive_col[!is.na(.df)]
-  indeterminate_row <- positive_row
-  indeterminate_col <- positive_col
-  to_repeat_row <- positive_row
-  to_repeat_col <- positive_col
-
-  positive <- data.frame(row = positive_row[.df == "P"],
-                         col = positive_col[.df == "P"])
-  indeterminate <- data.frame(row = indeterminate_row[.df == "I"],
-                              col = indeterminate_col[.df == "I"])
-  ## Include row offset for column label in Excel sheets
-  well_rows <- ((1:nrow(.df)) + 1L)[.df[ , "wells"] %in%
-                               low_positive_controls_df$wells]
-  to_repeat <- data.frame(
-    row = rep(well_rows, ncol(.df)),
-    col = rep(1:ncol(.df), each = length(well_rows)))
-
-  positive <- positive[complete.cases(positive), ]
-  indeterminate <- indeterminate[complete.cases(indeterminate), ]
-
-  ## set-style
-  if (nrow(positive) > 0) {
-    setCellStyle(wb, sheet = sheet_name, row = positive$row, col = positive$col,
-                 cellstyle = cs_positive)
-  }
-  if (nrow(indeterminate) > 0) {
-    setCellStyle(wb, sheet = sheet_name, row = indeterminate$row,
-               col = indeterminate$col,
-               cellstyle = cs_indeterminate)
-  }
-  if (nrow(to_repeat) > 0) {
-    setCellStyle(wb, sheet = sheet_name, row = to_repeat$row,
-                 col = to_repeat$col,
-                 cellstyle = cs_to_repeat)
-  }
-  setCellStyle(wb, sheet = sheet_name, row = 1, col = seq_along(names(.df)),
-               cellstyle = cs_header)
-
-  ## setCellStyle(wb, sheet = sheet_name, row = positive$row,
-  ##              col = positive$col,
-  ##              cellstyle = cs_border_positive)
-  ## setCellStyle(wb, sheet = sheet_name, row = indeterminate$row,
-  ##              col = indeterminate$col,
-  ##              cellstyle = cs_border_indeterminate)
-  setCellStyle(wb, sheet = sheet_name, row = 1, col = seq_along(names(.df)),
-               cellstyle = cs_border_header)
-  ## save-wb
-  saveWorkbook(wb)
-  excel_file
-}
 #' Returns dataframe with multiple combined results from antigen results
 #'
 #' The following results set are possible:
@@ -1327,14 +1356,16 @@ make_excel_wkbk <- function(file, w_raw_mfi_df, w_mfi_df, w_n_mfi_df,
   }
 
   create_wkbk(file, df_list, sheetnames)
-  sheets_index <- c(3, 4, 5)
-  for (i in seq_along(sheets_index)) {
-    df_index <- c(4, 4, 5) # normalized sheet gets same format as
-                                  # antigen sheet
-    format_luminex_results(file, df_list[[df_index[i]]],
-                           sheetnames[sheets_index[i]],
-                           low_positive_controls_df)
-  }
+  ## code disabled to allow temporary use under Java 12 environment, which has a
+  ## bug preventing use of XLConnect
+  # sheets_index <- c(3, 4, 5)
+  # for (i in seq_along(sheets_index)) {
+  #   df_index <- c(4, 4, 5) # normalized sheet gets same format as
+  #                                 # antigen sheet
+  #   format_luminex_results(file, df_list[[df_index[i]]],
+  #                          sheetnames[sheets_index[i]],
+  #                          low_positive_controls_df)
+  # }
   file
 }
 #' Returns a character vector of 'Y' if the sample indicates it is a

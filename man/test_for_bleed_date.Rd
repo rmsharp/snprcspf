@@ -8,7 +8,8 @@ alive.
 It terminates the script with an informative
 message saying what was wrong otherwise it simply returns NULL.}
 \usage{
-test_for_bleed_date(snprc_id, bleed_date, file_name, conn, run_props, run_error)
+test_for_bleed_date(snprc_id, bleed_date, file_name, conn, run_props,
+  run_error)
 }
 \arguments{
 \item{snprc_id}{character vector of \code{snprc_id}

@@ -5,7 +5,6 @@ date: "11/1/2017"
 output: html_document
 ---
 
-# snprcspf
 ## Installation
 
 ### Installation from Source

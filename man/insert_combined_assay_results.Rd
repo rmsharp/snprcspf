@@ -4,7 +4,8 @@
 \alias{insert_combined_assay_results}
 \title{Returns the number of saved records}
 \usage{
-insert_combined_assay_results(conn, r_df, table = "luminex_screen_results")
+insert_combined_assay_results(conn, r_df,
+  table = "luminex_screen_results")
 }
 \arguments{
 \item{conn}{database connection object}

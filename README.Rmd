@@ -14,6 +14,13 @@ knitr::opts_chunk$set(
   fig.path = "README-"
 )
 ```
+# snprcspf
+
+## Disabled Excel File Formating
+As of 2019 May 26, Java 12 has a bug \url{https://bugs.openjdk.java.net/browse/JDK-8221530}
+that prevents the use of the XLConnect package. This version of snprcspf has removed that 
+dependency with the side effect of not providing formating within the Excel workbook 
+generated.
 
 ```{r child = "installation.Rmd", ref = "installation"}
 ```
