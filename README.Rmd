@@ -25,3 +25,4 @@ generated.
 ```{r child = "installation.Rmd", ref = "installation"}
 ```
 
+Find online documentation at [https://rmsharp.github.io/snprcspf/](https://rmsharp.github.io/snprcspf/).

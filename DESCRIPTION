@@ -3,8 +3,8 @@ Type: Package
 Title: SNPRC SPF Colony Screening Data Software Tool Package
 Version: 1.0.3
 Date: 2019-05-26
-Author: R. Mark Sharp <rmsharp@me.com>
-Maintainer: R. Mark Sharp <rmsharp@me.com>
+Author@R:  person("R. Mark", "Sharp", email = "rmsharp@me.com", , 
+    role = c("aut", "ctb", "cre"))
 Description: Provides tools for working with SNPRC SPF Colony Screening Data.
 Depends:
     R (>= 3.2.1)
@@ -20,12 +20,15 @@ Imports:
     tm,
     XML
 Suggests:
+    covr,
     knitr,
+    pkgdown,
+    roxygen2 (>= 6.0.0),
     testthat,
     lintr
 Remotes:
-    rmsharp/animalr,
-    rmsharp/rmsutilityr
+    github::rmsharp/animalr,
+    github::rmsharp/rmsutilityr
 License: MIT + file LICENSE
 LazyData: TRUE
 VignetteBuilder: knitr

@@ -82,3 +82,5 @@ devtools::install_github("rmsharp/snprcspf")
 ```
 
 All missing dependencies should be automatically installed.
+
+Find online documentation at <https://rmsharp.github.io/snprcspf/>.

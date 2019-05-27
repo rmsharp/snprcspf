@@ -1,17 +1,39 @@
 language: r
-cache: packages
+sudo: required
+cache:
+  - packages
+  - github_packages
 dist: trusty
-r: release
+r:
+    - 3.4.1
+    - oldrel
+    - release
+r_packages:
+    - devtools
+    - covr
+    - rcmdcheck
+matrix:
+     include:
+         - os: osx
+           fortran: false
 before_install:
   - sudo R CMD javareconf
   - Rscript -e 'install.packages("rJava", type = "source")'
-r_github_packages:
-  - jimhester/covr,
-  - rmsharp/rmsutilityr
-  - rmsharp/animalr
 after_success:
   - Rscript -e 'covr::codecov()'
-sudo: false
+  - Rscript -e 'pkgdown::build_site()'
+deploy:
+  provider: pages
+  skip-cleanup: true
+  github-token: $GITHUB_PAT
+  keep-history: true
+  local-dir: docs
+  on:
+    branch: master
+env:
+  - global:
+    - CI=TRUE
+    - LINTR_COMMENT_BOT=false
 os:
   - osx
 warnings_are_errors: true
