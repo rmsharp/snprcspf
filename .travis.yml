@@ -16,9 +16,11 @@ r_packages:
 #     include:
 #         - os: osx
 #           fortran: false
-before_install:
+#before_install:
 #  - sudo R CMD javareconf
-  - Rscript -e 'install.packages("rJava", type = "source")'
+#  - Rscript -e 'install.packages("rJava", type = "source")'
+script:
+  - R -e 'r <- rcmdcheck::rcmdcheck(".", args = c("--no-manual")); devtools::test(); quit(save = "no", status = if (length(c(r$errors, r$warnings)) > 0) { 1 } else { 0 }, runLast = FALSE)'
 after_success:
   - Rscript -e 'covr::codecov()'
   - Rscript -e 'pkgdown::build_site()'
