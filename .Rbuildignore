@@ -4,3 +4,4 @@
 installation.*
 README.Rmd
 ^\.travis\.yml$
+^docs$

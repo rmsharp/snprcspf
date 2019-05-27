@@ -105,7 +105,7 @@
     <tbody>
       <tr>
         <th colspan="2">
-          <h2 id="section-all-functions" class="hasAnchor"><a href="#section-all-functions" class="anchor"></a>All functions</h2>
+          <h2 id="section-all-exposed-functions" class="hasAnchor"><a href="#section-all-exposed-functions" class="anchor"></a>All exposed functions</h2>
           <p class="section-desc"></p>
         </th>
       </tr>
@@ -175,25 +175,6 @@ the file ``cutoff.xlsx'' is the same as the list within the .lxd file.</p></td>
         </td>
         <td><p>Returns pdl_df with columns renamed, added and ordered to prepare the
 dataframe for inserting into the pdl_result table.</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="getRunPropertyValue.html">getRunPropertyValue()</a></code> </p>
-        </td>
-        <td><p>Returns value of run property if one is available else NA is provided.</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="getTransformedOutputFile.html">getTransformedOutputFile()</a></code> </p>
-        </td>
-        <td><p>Returns full name with path of transformed output file.</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="get_Machine_info.html">get_Machine_info()</a></code> </p>
-        </td>
-        <td><p>Returns Machine serialNumber, name, sftwareVersion, firmwareVersion, and
-DSPVersion</p></td>
       </tr><tr>
         
         <td>
@@ -329,18 +310,18 @@ vendor and copied into the Excel sheet "../inst/extdata/cutoff.xlsx"</p></td>
       </tr><tr>
         
         <td>
+          <p><code><a href="get_followup_pool_samples.html">get_followup_pool_samples()</a></code> </p>
+        </td>
+        <td><p>Returns assay results for individual animals based on assay results of pooled
+samples.</p></td>
+      </tr><tr>
+        
+        <td>
           <p><code><a href="get_followup.html">get_followup()</a></code> </p>
         </td>
         <td><p>Returns ``followup'' assay results, which are groups of assay results for an
 animal beginning with the first non-negative result and all subsequent
 results.</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="get_followup_pool_samples.html">get_followup_pool_samples()</a></code> </p>
-        </td>
-        <td><p>Returns assay results for individual animals based on assay results of pooled
-samples.</p></td>
       </tr><tr>
         
         <td>
@@ -371,9 +352,10 @@ is used.</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="get_mean_raw_mfi.html">get_mean_raw_mfi()</a></code> </p>
+          <p><code><a href="get_Machine_info.html">get_Machine_info()</a></code> </p>
         </td>
-        <td><p>Returns dataframe with means of replicated samples</p></td>
+        <td><p>Returns Machine serialNumber, name, sftwareVersion, firmwareVersion, and
+DSPVersion</p></td>
       </tr><tr>
         
         <td>
@@ -387,6 +369,12 @@ Luminex machine.</p></td>
           <p><code><a href="get_mean_raw_mfi_from_xlsx.html">get_mean_raw_mfi_from_xlsx()</a></code> </p>
         </td>
         <td><p>Returns the mean_raw_mfi_df from an Excel file (.xlsx extension)</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="get_mean_raw_mfi.html">get_mean_raw_mfi()</a></code> </p>
+        </td>
+        <td><p>Returns dataframe with means of replicated samples</p></td>
       </tr><tr>
         
         <td>
@@ -452,15 +440,15 @@ derived from each PDL report.</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="get_pdl_results.html">get_pdl_results()</a></code> </p>
-        </td>
-        <td><p>Get PDL results</p></td>
-      </tr><tr>
-        
-        <td>
           <p><code><a href="get_pdl_results_test_comment.html">get_pdl_results_test_comment()</a></code> </p>
         </td>
         <td><p>Returns a character vector of length 2 with the result and comment</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="get_pdl_results.html">get_pdl_results()</a></code> </p>
+        </td>
+        <td><p>Get PDL results</p></td>
       </tr><tr>
         
         <td>
@@ -490,12 +478,6 @@ Pool Id number.</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="get_raw_mfi.html">get_raw_mfi()</a></code> </p>
-        </td>
-        <td><p>Returns dataframe of original values</p></td>
-      </tr><tr>
-        
-        <td>
           <p><code><a href="get_raw_mfi_df.html">get_raw_mfi_df()</a></code> </p>
         </td>
         <td><p>Returns dataframe with raw mfi values from the raw section of the Excel
@@ -506,6 +488,12 @@ file.</p></td>
           <p><code><a href="get_raw_mfi_tables.html">get_raw_mfi_tables()</a></code> </p>
         </td>
         <td><p>Returns character vector with the raw data (raw mfi) table</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="get_raw_mfi.html">get_raw_mfi()</a></code> </p>
+        </td>
+        <td><p>Returns dataframe of original values</p></td>
       </tr><tr>
         
         <td>
@@ -626,6 +614,18 @@ dcast</p></td>
         </td>
         <td><p>Returns yyyymmdd in with optional separator between date units if
 string looks like a date.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="getRunPropertyValue.html">getRunPropertyValue()</a></code> </p>
+        </td>
+        <td><p>Returns value of run property if one is available else NA is provided.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="getTransformedOutputFile.html">getTransformedOutputFile()</a></code> </p>
+        </td>
+        <td><p>Returns full name with path of transformed output file.</p></td>
       </tr><tr>
         
         <td>
@@ -762,15 +762,15 @@ vector of pdl_assay.</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="pooled_Y_or_N.html">pooled_Y_or_N()</a></code> </p>
-        </td>
-        <td><p>Returns "Y" if a sample is pooled and "N" if it is an individual sample.</p></td>
-      </tr><tr>
-        
-        <td>
           <p><code><a href="pooled_bleed_date_to_sample_date.html">pooled_bleed_date_to_sample_date()</a></code> </p>
         </td>
         <td><p>Returns pooled_df dataframe with bleed_date replaced by sample_date.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="pooled_Y_or_N.html">pooled_Y_or_N()</a></code> </p>
+        </td>
+        <td><p>Returns "Y" if a sample is pooled and "N" if it is an individual sample.</p></td>
       </tr><tr>
         
         <td>
@@ -790,17 +790,17 @@ of printing out the bad sample dates in a table with file name LocName</p></td>
       </tr><tr>
         
         <td>
+          <p><code><a href="read_sample_file.html">read_sample_file()</a></code> </p>
+        </td>
+        <td><p>Read blood or dna sample file</p></td>
+      </tr><tr>
+        
+        <td>
           <p><code><a href="readRunPropertiesFile.html">readRunPropertiesFile()</a></code> </p>
         </td>
         <td><p>Returns a dataframe with four columns ("name", "value",
 "java_data_type", and "location"), which is defined when a Run Properties
 File provided by the system is read.</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="read_sample_file.html">read_sample_file()</a></code> </p>
-        </td>
-        <td><p>Read blood or dna sample file</p></td>
       </tr><tr>
         
         <td>
@@ -942,7 +942,7 @@ triggers warning and continues execution</p></td>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#section-all-functions">All functions</a></li>
+      <li><a href="#section-all-exposed-functions">All exposed functions</a></li>
     </ul>
   </div>
 </div>

@@ -2,6 +2,8 @@
 .Rhistory
 .RData
 .Ruserdata
-mqn/*
+docs/*.svg
+docs/*.yml
+docc/*.js
 !NAMESPACE
 !man
