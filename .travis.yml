@@ -12,10 +12,10 @@ r_packages:
     - devtools
     - covr
     - rcmdcheck
-#matrix:
-#     include:
-#         - os: osx
-#           fortran: false
+matrix:
+     include:
+         - os: osx
+           fortran: false
 #before_install:
 #  - sudo R CMD javareconf
 #  - Rscript -e 'install.packages("rJava", type = "source")'
@@ -27,7 +27,7 @@ after_success:
 deploy:
   provider: pages
   skip-cleanup: true
-  github-token: $GITHUB_TOKEN
+  github-token: $GITHUB_PAT
   keep-history: true
   local-dir: docs
   on:
@@ -36,7 +36,6 @@ env:
   - global:
     - CI=TRUE
     - LINTR_COMMENT_BOT=false
-os:
-  - osx
-  - linux
-warnings_are_errors: true
+#os:
+#  - osx
+#  - linux
