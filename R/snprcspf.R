@@ -3019,10 +3019,10 @@ get_start_end_dates <- function(files) {
       xmlChildren(xmlRoot(xmlTreeParse(file)))$Plate)[["endDate"]]
   })
   data.frame(file = names(start_dates),
-             start_date = strptime(as.character(start_dates),
-                                   format = "%Y-%m-%dT%H:%M:%S"),
-             end_date = strptime(as.character(end_dates),
-                                 format = "%Y-%m-%dT%H:%M:%S"),
+             start_date = suppressWarnings(strptime(as.character(start_dates),
+                                   format = "%Y-%m-%dT%H:%M:%S")),
+             end_date = suppressWarnings(strptime(as.character(end_dates),
+                                 format = "%Y-%m-%dT%H:%M:%S")),
              stringsAsFactors = FALSE)
 }
 #' Returns dataframe of original values
