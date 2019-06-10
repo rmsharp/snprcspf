@@ -16,9 +16,12 @@ matrix:
      include:
          - os: osx
            fortran: false
-#before_install:
+before_install:
 #  - sudo R CMD javareconf
 #  - Rscript -e 'install.packages("rJava", type = "source")'
+
+Rscript -e 'install.packages(c("animalr", "lubridate", "readxl", "reshape2", "RODBC", "rmsutilityr", "sqldf", "stringi", "tm", "XM","devtools", "covr", "rcmdcheck"), build = FALSE);if (!all(c("devtools", "covr", "rcmdcheck") %in% installed.packages())) { q(status = 1, save = "no")}'
+
 script:
   - R -e 'r <- rcmdcheck::rcmdcheck(".", args = c("--no-manual")); devtools::test(); quit(save = "no", status = if (length(c(r$errors, r$warnings)) > 0) { 1 } else { 0 }, runLast = FALSE)'
 after_success:
