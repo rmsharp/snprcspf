@@ -3462,9 +3462,10 @@ handleErrorsAndWarnings <- function(run_props, run_error) {
   if (run_error$level > 0) {
     fileConn <- file(getRunPropertyValue(run_props,
                                          "transformedRunPropertiesFile"))
-    if (!isOpen(fileConn))
-      stop(stri_c("Failed to open ", getRunPropertyValue(run_props,
-                                                         "transformedRunPropertiesFile")))
+    # issue 40007 Transform script for Luminex SPF Screen throwing error 3/19/2020 tjh
+    # if (!isOpen(fileConn))
+    #   stop(stri_c("Failed to open ", getRunPropertyValue(run_props,
+    #                                                      "transformedRunPropertiesFile")))
     if (run_error$level == 1) {
       writeLines(c(stri_c("maximumSeverity ", "WARN ", sep = "\t")), fileConn)
     }
