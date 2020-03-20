@@ -3,7 +3,7 @@ Type: Package
 Title: SNPRC SPF Colony Screening Data Software Tool Package
 Version: 1.0.7
 Date: 2019-06-08
-Authors@R:  person("R. Mark", "Sharp", email = "rmsharp@me.com", , 
+Authors@R: person("R. Mark", "Sharp", email = "rmsharp@me.com", , 
     role = c("aut", "ctb", "cre"))
 Description: Provides tools for working with SNPRC SPF Colony Screening Data.
 Depends:
@@ -11,6 +11,7 @@ Depends:
 Imports:
     animalr,
     lubridate,
+    openxlsx,
     readxl,
     reshape2,
     RODBC,
@@ -24,13 +25,12 @@ Suggests:
     knitr,
     pkgdown,
     roxygen2 (>= 6.0.0),
-    testthat,
-    lintr
+    testthat
 Remotes:
     github::rmsharp/animalr,
     github::rmsharp/rmsutilityr
 License: MIT + file LICENSE
 LazyData: TRUE
 VignetteBuilder: knitr
-RoxygenNote: 6.1.1
+RoxygenNote: 7.0.2
 Encoding: UTF-8

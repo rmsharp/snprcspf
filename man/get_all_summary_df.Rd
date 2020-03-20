@@ -4,8 +4,10 @@
 \alias{get_all_summary_df}
 \title{Returns a dataframe with all summary results combined.}
 \usage{
-get_all_summary_df(path = "../inst/extdata/", col_names = c("Filename",
-  "Animal.ID", "STLV", "SRV", "BV", "SIV", "Measles"))
+get_all_summary_df(
+  path = "../inst/extdata/",
+  col_names = c("Filename", "Animal.ID", "STLV", "SRV", "BV", "SIV", "Measles")
+)
 }
 \arguments{
 \item{path}{file path to directory containing files to be read.}

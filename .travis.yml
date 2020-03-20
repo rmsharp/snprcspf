@@ -36,7 +36,6 @@ deploy:
 env:
   - global:
     - CI=TRUE
-    - LINTR_COMMENT_BOT=false
 #os:
 #  - osx
 #  - linux

@@ -5,8 +5,11 @@
 \title{Returns a dataframe with all bead or all summary results combined
 depending on which function and column names are passed in.}
 \usage{
-get_all_df(path = "../inst/extdata/", .fun = get_summary_df,
-  col_names = get_col_names("syntactic_summary"))
+get_all_df(
+  path = "../inst/extdata/",
+  .fun = get_summary_df,
+  col_names = get_col_names("syntactic_summary")
+)
 }
 \arguments{
 \item{path}{file path to directory containing files to be read.}

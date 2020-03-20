@@ -5,9 +5,13 @@
 \title{Returns a list of lists of length two containing $content and $meta lists
 derived from each PDL report.}
 \usage{
-get_pdl_reports(base_directory = "../inst/extdata/",
-  pdl_report_directory = "PDL/", start_year, end_year,
-  excluded_files = character(0))
+get_pdl_reports(
+  base_directory = "../inst/extdata/",
+  pdl_report_directory = "PDL/",
+  start_year,
+  end_year,
+  excluded_files = character(0)
+)
 }
 \arguments{
 \item{base_directory}{character vector with path for directory in which the

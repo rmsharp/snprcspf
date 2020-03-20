@@ -5,8 +5,15 @@
 \title{Form an Excel workbook and worksheet similar in format to those being
 made by Luis Giavedoni's laboratory.}
 \usage{
-make_excel_wkbk(file, w_raw_mfi_df, w_mfi_df, w_n_mfi_df, w_r_mfi_df,
-  w_combined_df, low_positive_controls_df)
+make_excel_wkbk(
+  file,
+  w_raw_mfi_df,
+  w_mfi_df,
+  w_n_mfi_df,
+  w_r_mfi_df,
+  w_combined_df,
+  low_positive_controls_df
+)
 }
 \arguments{
 \item{file}{character vector of length one with name of file to create}
