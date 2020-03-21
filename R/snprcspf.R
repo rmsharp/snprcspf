@@ -3481,7 +3481,7 @@ handleErrorsAndWarnings <- function(run_props, run_error) {
       writeLines(run_error$msg, fileConn)
       close(fileConn)
     }
-    quit()
+    quit("no")
   }
 }
 #' Finds any wells with low positive controls
