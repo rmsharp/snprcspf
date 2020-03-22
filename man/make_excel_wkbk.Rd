@@ -9,7 +9,7 @@ make_excel_wkbk(
   file,
   w_raw_mfi_df,
   w_mfi_df,
-  w_n_mfi_df,
+  w_d_mfi_df,
   w_r_mfi_df,
   w_combined_df,
   low_positive_controls_df
@@ -22,7 +22,7 @@ make_excel_wkbk(
 
 \item{w_mfi_df}{dataframe with background substracted from raw results}
 
-\item{w_n_mfi_df}{dataframe with normalized values where divisors were
+\item{w_d_mfi_df}{dataframe with normalized values where divisors were
 used on background subtracted results}
 
 \item{w_r_mfi_df}{dataframe where each antigen result is called as N, I, or

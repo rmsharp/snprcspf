@@ -51,8 +51,6 @@
 ##   positive_col <- matrix(data = rep(1:ncol(.df), each = nrow(.df)),
 ##                          nrow = nrow(.df),
 ##                          ncol = ncol(.df))
-##   ##  positive_row <- positive_row[!is.na(.df)]
-##   ##  positive_col <- positive_col[!is.na(.df)]
 ##   indeterminate_row <- positive_row
 ##   indeterminate_col <- positive_col
 ##   to_repeat_row <- positive_row

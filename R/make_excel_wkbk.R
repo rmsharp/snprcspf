@@ -5,7 +5,7 @@
 #' @param file character vector of length one with name of file to create
 #' @param w_raw_mfi_df dataframe with raw results from Luminex machine
 #' @param w_mfi_df dataframe with background substracted from raw results
-#' @param w_n_mfi_df dataframe with normalized values where divisors were
+#' @param w_d_mfi_df dataframe with normalized values where divisors were
 #' used on background subtracted results
 #' @param w_r_mfi_df dataframe where each antigen result is called as N, I, or
 #' P based on is values relative to a fraction of the low control value.
@@ -17,19 +17,19 @@
 #'
 #' @import rmsutilityr
 #' @export
-make_excel_wkbk <- function(file, w_raw_mfi_df, w_mfi_df, w_n_mfi_df,
+make_excel_wkbk <- function(file, w_raw_mfi_df, w_mfi_df, w_d_mfi_df,
                             w_r_mfi_df, w_combined_df,
                             low_positive_controls_df) {
   w_raw_mfi_df$file <- basename(w_raw_mfi_df$file)
   w_mfi_df$file <- basename(w_mfi_df$file)
-  w_n_mfi_df$file <- basename(w_n_mfi_df$file)
+  w_d_mfi_df$file <- basename(w_d_mfi_df$file)
   w_r_mfi_df$file <- basename(w_r_mfi_df$file)
   w_combined_df$file_name <- basename(w_combined_df$file_name)
   if (nrow(low_positive_controls_df) > 0) {
     df_list <- list(
       w_raw_mfi_df,
       w_mfi_df,
-      w_n_mfi_df,
+      w_d_mfi_df,
       w_r_mfi_df,
       w_combined_df,
       low_positive_controls_df)
@@ -44,7 +44,7 @@ make_excel_wkbk <- function(file, w_raw_mfi_df, w_mfi_df, w_n_mfi_df,
     df_list <- list(
       w_raw_mfi_df,
       w_mfi_df,
-      w_n_mfi_df,
+      w_d_mfi_df,
       w_r_mfi_df,
       w_combined_df)
     sheetnames <- c(
