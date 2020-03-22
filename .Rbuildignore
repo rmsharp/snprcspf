@@ -2,6 +2,15 @@
 ^\.Rproj\.user$
 ^.*\.MySCMServerInfo$
 installation.*
-README.Rmd
 ^\.travis\.yml$
 ^docs$
+^R/format_luminex_results.R$
+README\.*\.png$
+# An Rmarkdown file used to generate README.md
+^README\.Rmd$
+# Comments for CRAN submission
+^cran-comments\.md$
+# A news file written in Markdown
+^NEWS\.md$
+# A news file written in RMarkdown
+^NEWS\.Rmd$

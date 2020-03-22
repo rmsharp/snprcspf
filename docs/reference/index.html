@@ -67,7 +67,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">snprcspf</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.7</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.8</span>
       </span>
     </div>
 
@@ -81,6 +81,9 @@
 </li>
 <li>
   <a href="../reference/index.html">Reference</a>
+</li>
+<li>
+  <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -110,6 +113,55 @@
     </colgroup>
 
     <tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-data-objects" class="hasAnchor"><a href="#section-data-objects" class="anchor"></a>Data objects</h2>
+          <p class="section-desc"></p>
+        </th>
+      </tr>
+      <tr>
+        
+        <td>
+          <p><code><a href="plate165_mean_raw_mfi_df.html">plate165_mean_raw_mfi_df</a></code> </p>
+        </td>
+        <td><p>plate165_mean_raw_mfi_df is a loadable version of the mean_raw_mfi_df dataframe
+created by `get_mean_raw_mfi_from_xlsx` or `get_mean_raw_mfi_from_lxd` and
+used by `get_low_positive_controls` and `subtract_background`.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="plate166_combined_df.html">plate166_combined_df</a></code> </p>
+        </td>
+        <td><p>combined_df is a loadable version of the combined_df dataframe
+created by `get_combined`
+used by `get_wide_df`, `print_bad_animal_ids` and `print_bad_sample_dates`.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="plate166_dfs.html">plate166_dfs</a></code> </p>
+        </td>
+        <td><p>plate166_dfs is a loadable version of the dfs list of dataframes
+created by `get_wide_df`
+used by `make_excel_wkbk`.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="plate166_mean_raw_mfi_df.html">plate166_mean_raw_mfi_df</a></code> </p>
+        </td>
+        <td><p>plate166_mean_raw_mfi_df is a loadable version of the mean_raw_mfi_df dataframe
+created by `get_mean_raw_mfi_from_xlsx` or `get_mean_raw_mfi_from_lxd` and
+used by `get_low_positive_controls` and `subtract_background`.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="plate166_r_mfi_df.html">plate166_r_mfi_df</a></code> </p>
+        </td>
+        <td><p>plate166_r_mfi_df is a loadable version of the r_mfi_df dataframe
+created by `r_mfi_df` followed by `basename`
+used by `basename` (with `basename(r_mfi_df$file)`, `get_combined` and
+`get_wide_df`.</p></td>
+      </tr>
+    </tbody><tbody>
       <tr>
         <th colspan="2">
           <h2 id="section-all-exposed-functions" class="hasAnchor"><a href="#section-all-exposed-functions" class="anchor"></a>All exposed functions</h2>
@@ -453,7 +505,7 @@ derived from each PDL report.</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="get_pdl_results.html">get_pdl_results()</a></code> </p>
+          <p><code><a href="get_pdl_results.html">get_pdl_results()</a></code> <code><a href="get_pdl_results.html">get_pdl_results()</a></code> </p>
         </td>
         <td><p>Get PDL results</p></td>
       </tr><tr>
@@ -585,22 +637,19 @@ file.</p></td>
         <td>
           <p><code><a href="get_test_antigens.html">get_test_antigens()</a></code> </p>
         </td>
-        <td><p>#' Makes function to return agents and antigen pairs.
-#'
-#' @param session session object from LabKey.
-#' @import Rlabkey
-make_get_agents_and_antigen_pairs &lt;- function(session) 
-  schema_conn &lt;- getSchema(session, "lists")
-  schema_element &lt;- schema_conn[["agent_antigen_pairs"]]
-  agents_and_antigen_pairs &lt;- getRows(session, query)
-  f &lt;- function() 
-    agents_and_antigen_pairs</p></td>
+        <td><p>Returns the list of test antigens</p></td>
       </tr><tr>
         
         <td>
           <p><code><a href="get_usable_files.html">get_usable_files()</a></code> </p>
         </td>
         <td><p>Returns a character vector of names of usable files.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="get_version.html">get_version()</a></code> </p>
+        </td>
+        <td><p>getVersion Get the version number of snprcspf</p></td>
       </tr><tr>
         
         <td>
@@ -949,6 +998,7 @@ triggers warning and continues execution</p></td>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
+      <li><a href="#section-data-objects">Data objects</a></li>
       <li><a href="#section-all-exposed-functions">All exposed functions</a></li>
     </ul>
   </div>

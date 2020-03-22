@@ -1,4 +1,12 @@
 reference:
+- title: "Data objects"
+  desc: ~
+  contents:
+  - '`plate165_mean_raw_mfi_df`'
+  - '`plate166_combined_df`'
+  - '`plate166_dfs`'
+  - '`plate166_mean_raw_mfi_df`'
+  - '`plate166_r_mfi_df`'
 - title: All exposed functions
   desc: ~
   contents:
@@ -75,6 +83,7 @@ reference:
   - '`get_summary_df`'
   - '`get_test_antigens`'
   - '`get_usable_files`'
+  - '`get_version`'
   - '`get_wide_df`'
   - '`get_workset_desc`'
   - '`get_yyyymmdd_from_possible_dates`'

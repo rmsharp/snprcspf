@@ -16,29 +16,18 @@ format_luminex_results <- function(excel_file, .df,
  ## set-rows
  ## format cells with highlighting, text wrapping, grey header, and column
  ## specific borders
- wb <- createWorkbook(excel_file)
- cs_positive <- createCellStyle(wb)
- cs_indeterminate <- createCellStyle(wb)
- cs_to_repeat <- createCellStyle(wb) # low positive control wells
- cs_header <- createCellStyle(wb)
- cs_border_header <- createCellStyle(wb)
- ## set-wrap
- setWrapText(cs_positive, wrap = TRUE)
- setWrapText(cs_indeterminate, wrap = TRUE)
- setWrapText(cs_to_repeat, wrap = TRUE)
- setWrapText(cs_header, wrap = TRUE)
- setWrapText(cs_border_header, wrap = TRUE)
- ## set-fill
+ wb <- createWorkbook()
+ cs_positive <- createCellStyle(fgFill = "red3", wrapText = TRUE)
+ cs_indeterminate <- createCellStyle(fbFill = "blue", wrapText = TRUE)
+ cs_to_repeat <- createCellStyle(fbFill = "khaki1", wrapText = TRUE) # low positive control wells
+ cs_header <- createCellStyle(fbFill = "grey85", wrapText = TRUE)
+ cs_border_header <- createCellStyle(fbFill = "grey85", wrapText = TRUE)
+  ## set-fill
  setFillPattern(cs_positive, fill = XLC$FILL.SOLID_FOREGROUND)
- setFillForegroundColor(cs_positive, color = XLC$COLOR.ROSE)
  setFillPattern(cs_indeterminate, fill = XLC$FILL.SOLID_FOREGROUND)
- setFillForegroundColor(cs_indeterminate, color = XLC$COLOR.CORNFLOWER_BLUE)
  setFillPattern(cs_to_repeat, fill = XLC$FILL.SOLID_FOREGROUND)
- setFillForegroundColor(cs_to_repeat, color = XLC$COLOR.LEMON_CHIFFON)
  setFillPattern(cs_header, fill = XLC$FILL.SOLID_FOREGROUND)
  setFillPattern(cs_border_header, fill = XLC$FILL.SOLID_FOREGROUND)
- setFillForegroundColor(cs_header, color = XLC$COLOR.GREY_25_PERCENT)
- setFillForegroundColor(cs_border_header, color = XLC$COLOR.GREY_25_PERCENT)
  ## make-matrices
  ## Include row offset for column label in Excel sheets
  positive_row <- matrix(data = rep(1:nrow(.df), each = ncol(.df)),
@@ -47,8 +36,7 @@ format_luminex_results <- function(excel_file, .df,
  positive_col <- matrix(data = rep(1:ncol(.df), each = nrow(.df)),
                         nrow = nrow(.df),
                         ncol = ncol(.df))
- ##  positive_row <- positive_row[!is.na(.df)]
- ##  positive_col <- positive_col[!is.na(.df)]
+
  indeterminate_row <- positive_row
  indeterminate_col <- positive_col
  to_repeat_row <- positive_row

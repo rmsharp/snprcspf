@@ -5,7 +5,6 @@ output: github_document
 [![Build Status](https://travis-ci.org/rmsharp/snprcspf.svg?branch=master)](https://travis-ci.org/rmsharp/snprcspf)
 [![codecov](https://codecov.io/gh/rmsharp/snprcspf/branch/master/graph/badge.svg)](https://codecov.io/gh/rmsharp/snprcspf)
 
-<!-- README.md is generated from README.Rmd. Please edit that file -->
 
 ```{r, echo = FALSE}
 knitr::opts_chunk$set(
@@ -14,7 +13,8 @@ knitr::opts_chunk$set(
   fig.path = "README-"
 )
 ```
-# snprcspf
+
+# snprcspf -- Version `r snprcspf::get_version()`
 
 ## Disabled Excel File Formating
 As of 2019 May 26, Java 12 has a bug \url{https://bugs.openjdk.java.net/browse/JDK-8221530}

@@ -6,16 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>#' Makes function to return agents and antigen pairs.
-#'
-#' @param session session object from LabKey.
-#' @import Rlabkey
-make_get_agents_and_antigen_pairs &lt;- function(session) 
-  schema_conn &lt;- getSchema(session, "lists")
-  schema_element &lt;- schema_conn[["agent_antigen_pairs"]]
-  agents_and_antigen_pairs &lt;- getRows(session, query)
-  f &lt;- function() 
-    agents_and_antigen_pairs — get_test_antigens • snprcspf</title>
+<title>Returns the list of test antigens — get_test_antigens • snprcspf</title>
 
 
 <!-- jquery -->
@@ -44,17 +35,9 @@ make_get_agents_and_antigen_pairs &lt;- function(session)
 
 
 
-<meta property="og:title" content="#' Makes function to return agents and antigen pairs.
-#'
-#' @param session session object from LabKey.
-#' @import Rlabkey
-make_get_agents_and_antigen_pairs &lt;- function(session) 
-  schema_conn &lt;- getSchema(session, "lists")
-  schema_element &lt;- schema_conn[["agent_antigen_pairs"]]
-  agents_and_antigen_pairs &lt;- getRows(session, query)
-  f &lt;- function() 
-    agents_and_antigen_pairs — get_test_antigens" />
-<meta property="og:description" content="Returns the list of test antigens" />
+<meta property="og:title" content="Returns the list of test antigens — get_test_antigens" />
+<meta property="og:description" content="Uses get_agents_and_antigen_pairs() to create the list of unique
+test antigens" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -87,7 +70,7 @@ make_get_agents_and_antigen_pairs &lt;- function(session)
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">snprcspf</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.7</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.8</span>
       </span>
     </div>
 
@@ -101,6 +84,9 @@ make_get_agents_and_antigen_pairs &lt;- function(session)
 </li>
 <li>
   <a href="../reference/index.html">Reference</a>
+</li>
+<li>
+  <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -118,37 +104,24 @@ make_get_agents_and_antigen_pairs &lt;- function(session)
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>#' Makes function to return agents and antigen pairs.
-#'
-#' @param session session object from LabKey.
-#' @import Rlabkey
-make_get_agents_and_antigen_pairs &lt;- function(session) 
-  schema_conn &lt;- getSchema(session, "lists")
-  schema_element &lt;- schema_conn[["agent_antigen_pairs"]]
-  agents_and_antigen_pairs &lt;- getRows(session, query)
-  f &lt;- function() 
-    agents_and_antigen_pairs</h1>
+    <h1>Returns the list of test antigens</h1>
     
     <div class="hidden name"><code>get_test_antigens.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Returns the list of test antigens</p>
+    <p>Uses <code><a href='get_agents_and_antigen_pairs.html'>get_agents_and_antigen_pairs()</a></code> to create the list of unique
+test antigens</p>
     </div>
 
     <pre class="usage"><span class='fu'>get_test_antigens</span>()</pre>
 
 
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
-
-    <p>Uses <code><a href='get_agents_and_antigen_pairs.html'>get_agents_and_antigen_pairs()</a></code> to create the list of unique
-test antigens</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#details">Details</a></li>
     </ul>
 
   </div>

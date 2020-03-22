@@ -4,9 +4,7 @@
 Status](https://travis-ci.org/rmsharp/snprcspf.svg?branch=master)](https://travis-ci.org/rmsharp/snprcspf)
 [![codecov](https://codecov.io/gh/rmsharp/snprcspf/branch/master/graph/badge.svg)](https://codecov.io/gh/rmsharp/snprcspf)
 
-<!-- README.md is generated from README.Rmd. Please edit that file -->
-
-# snprcspf
+# snprcspf – Version 1.0.8 (20200321)
 
 ## Disabled Excel File Formating
 
