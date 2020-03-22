@@ -10,6 +10,10 @@ output:
   ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
+# snprcspf 1.0.9 (20200321)
+-   Copied build instructions from nprcgenekeepr
+-   Removed redundant copy of a function.
+
 # snprcspf 1.0.8 (20200321)
 -   Separated R code into seperate files for each function.
 -   Created some data objects for testing and demonstration. This has
