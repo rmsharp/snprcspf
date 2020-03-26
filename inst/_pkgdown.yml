@@ -20,6 +20,7 @@ reference:
   - '`create_spf_samples_tbl`'
   - '`divisors_match`'
   - '`fix_pdl_csv_columns`'
+  - '`format_luminex_results`'
   - '`get_agents_and_antigen_pairs`'
   - '`get_all_combined`'
   - '`get_all_df`'

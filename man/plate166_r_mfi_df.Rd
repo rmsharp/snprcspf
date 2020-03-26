@@ -7,7 +7,9 @@
 created by `r_mfi_df` followed by `basename`
 used by `basename` (with `basename(r_mfi_df$file)`, `get_combined` and
 `get_wide_df`.}
-\format{An object of class \code{data.frame} with 960 rows and 10 columns.}
+\format{
+An object of class \code{data.frame} with 960 rows and 10 columns.
+}
 \usage{
 plate166_r_mfi_df
 }

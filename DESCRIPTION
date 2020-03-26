@@ -10,7 +10,7 @@ Depends:
     R (>= 3.5.0)
 Imports:
     animalr,
-    lubridate,
+    lubridate, 
     openxlsx,
     readxl,
     reshape2,
@@ -33,6 +33,6 @@ Language: en-US
 License: MIT + file LICENSE
 LazyData: TRUE
 VignetteBuilder: knitr
-RoxygenNote: 7.0.2
+RoxygenNote: 7.1.0
 Encoding: UTF-8
 Cache: packages

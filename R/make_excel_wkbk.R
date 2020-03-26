@@ -56,15 +56,14 @@ make_excel_wkbk <- function(file, w_raw_mfi_df, w_mfi_df, w_d_mfi_df,
   }
 
   create_wkbk(file, df_list, sheetnames)
-  ## code disabled to allow temporary use under Java 12 environment, which has a
-  ## bug preventing use of XLConnect
-  # sheets_index <- c(3, 4, 5)
-  # for (i in seq_along(sheets_index)) {
-  #   df_index <- c(4, 4, 5) # normalized sheet gets same format as
-  #                                 # antigen sheet
-  #   format_luminex_results(file, df_list[[df_index[i]]],
-  #                          sheetnames[sheets_index[i]],
-  #                          low_positive_controls_df)
-  # }
+  sheets_index <- c(3, 4, 5)
+  for (i in seq_along(sheets_index)) {
+   df_index <- c(4, 4, 5) # normalized sheet gets same format as
+                                 # antigen sheet
+   fmt_luminex_results(excel_file = file,
+                          dFrame = df_list[[df_index[i]]],
+                          sheet_name = sheetnames[sheets_index[i]],
+                          low_positive_controls_df = low_positive_controls_df)
+  }
   file
 }

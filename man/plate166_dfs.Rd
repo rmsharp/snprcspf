@@ -6,7 +6,9 @@
 \title{plate166_dfs is a loadable version of the dfs list of dataframes
 created by `get_wide_df`
 used by `make_excel_wkbk`.}
-\format{An object of class \code{list} of length 5.}
+\format{
+An object of class \code{list} of length 5.
+}
 \usage{
 plate166_dfs
 }
