@@ -1,7 +1,19 @@
 NEWS
 ================
 R. Mark Sharp
-03/21/2020
+03/28/2020
+
+# snprcspf 1.1.0 (20200328)
+
+  - Have replaced dependence on Java for the Excel formatting. Using
+    openxlsx package
+  - Have cleaned up code for file name and file path management for the
+    Excel input file names and paths
+
+# snprcspf 1.0.9 (20200321)
+
+  - Copied build instructions from nprcgenekeepr
+  - Removed redundant copy of a function.
 
 # snprcspf 1.0.8 (20200321)
 
@@ -12,4 +24,7 @@ R. Mark Sharp
 # snprcspf 1.0.7 (20190526)
 
   - Removed formating of Excel sheets to remove dependency on rJava used
-    by XLConnect.
+    by XLConnect. As of 2019 May 26, Java 12 has a bug  that prevents
+    the use of the XLConnect package. This version of snprcspf has
+    removed that dependency with the side effect of not providing
+    formating within the Excel workbook generated.

@@ -4,14 +4,12 @@
 Status](https://travis-ci.org/rmsharp/snprcspf.svg?branch=master)](https://travis-ci.org/rmsharp/snprcspf)
 [![codecov](https://codecov.io/gh/rmsharp/snprcspf/branch/master/graph/badge.svg)](https://codecov.io/gh/rmsharp/snprcspf)
 
-# snprcspf – Version 1.0.9 (20200321)
+# snprcspf – Version 1.1.0 (20200328)
 
-## Disabled Excel File Formating
+## Excel File Formating Is Back
 
-As of 2019 May 26, Java 12 has a bug  that prevents the use of the
-XLConnect package. This version of snprcspf has removed that dependency
-with the side effect of not providing formating within the Excel
-workbook generated.
+The dependency on XLConnect package and thus Java has been replaced with
+a dependency on openxlsx and thus Perl as of version 1.1.0 of 20200328.
 
 ## Installation
 

@@ -6,8 +6,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Returns a dataframe, with sets of assays with an antibody assay (ab_assay)
-and a PCR based assay (pcr_assay) for each agent. — get_assay_pairs • snprcspf</title>
+<title>Conditionally formats a worksheet based on data within the dataframe as a
+side effect. — fmt_luminex_results • snprcspf</title>
 
 
 <!-- jquery -->
@@ -36,10 +36,10 @@ and a PCR based assay (pcr_assay) for each agent. — get_assay_pairs • snprcs
 
 
 
-<meta property="og:title" content="Returns a dataframe, with sets of assays with an antibody assay (ab_assay)
-and a PCR based assay (pcr_assay) for each agent. — get_assay_pairs" />
-<meta property="og:description" content="Returns a dataframe, with sets of assays with an antibody assay (ab_assay)
-and a PCR based assay (pcr_assay) for each agent." />
+<meta property="og:title" content="Conditionally formats a worksheet based on data within the dataframe as a
+side effect. — fmt_luminex_results" />
+<meta property="og:description" content="Conditionally formats a worksheet based on data within the dataframe as a
+side effect." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -106,25 +106,58 @@ and a PCR based assay (pcr_assay) for each agent." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Returns a dataframe, with sets of assays with an antibody assay (ab_assay)
-and a PCR based assay (pcr_assay) for each agent.</h1>
+    <h1>Conditionally formats a worksheet based on data within the dataframe as a
+side effect.</h1>
     
-    <div class="hidden name"><code>get_assay_pairs.Rd</code></div>
+    <div class="hidden name"><code>fmt_luminex_results.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Returns a dataframe, with sets of assays with an antibody assay (ab_assay)
-and a PCR based assay (pcr_assay) for each agent.</p>
+    <p>Conditionally formats a worksheet based on data within the dataframe as a
+side effect.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>get_assay_pairs</span>()</pre>
+    <pre class="usage"><span class='fu'>fmt_luminex_results</span>(
+  <span class='no'>excel_file</span>,
+  <span class='no'>dFrame</span>,
+  <span class='kw'>sheet_name</span> <span class='kw'>=</span> <span class='st'>"final_result"</span>,
+  <span class='no'>low_positive_controls_df</span>
+)</pre>
 
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>excel_file</th>
+      <td><p>character vector with the name of the Excel file</p></td>
+    </tr>
+    <tr>
+      <th>dFrame</th>
+      <td><p>dataframe being used to guide highlighting. It is the same
+one as was used to make the worksheet.</p></td>
+    </tr>
+    <tr>
+      <th>sheet_name</th>
+      <td><p>name of the worksheet to highlight.</p></td>
+    </tr>
+    <tr>
+      <th>low_positive_controls_df</th>
+      <td><p>dataframe with the low positive controls</p></td>
+    </tr>
+    </table>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>Excel file name of file that has been formatted to highlight
+non-negative results in the sheet indicated. This highlights "I" and
+"P" results</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
+      <li><a href="#arguments">Arguments</a></li>
+      <li><a href="#value">Value</a></li>
     </ul>
 
   </div>
