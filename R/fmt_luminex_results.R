@@ -43,21 +43,17 @@ fmt_luminex_results <- function(excel_file, dFrame,
 
   ## make-matrices
   ## Include row offset for column label in Excel sheets
-  positive_row <- matrix(data = rep(1:nrow(dFrame), each = ncol(dFrame)),
+  row_number <- matrix(data = rep(1:nrow(dFrame), each = ncol(dFrame)),
                         nrow = nrow(dFrame),
                         ncol = ncol(dFrame), byrow = TRUE) + 1L
-  positive_col <- matrix(data = rep(1:ncol(dFrame), each = nrow(dFrame)),
+  col_number <- matrix(data = rep(1:ncol(dFrame), each = nrow(dFrame)),
                         nrow = nrow(dFrame),
                         ncol = ncol(dFrame))
 
-  indeterminate_row <- positive_row
-  indeterminate_col <- positive_col
-  to_repeat_row <- positive_row
-  to_repeat_col <- positive_col
-  positive <- data.frame(row = positive_row[dFrame == "P"],
-                        col = positive_col[dFrame == "P"])
-  indeterminate <- data.frame(row = indeterminate_row[dFrame == "I"],
-                             col = indeterminate_col[dFrame == "I"])
+  positive <- data.frame(row = row_number[dFrame == "P"],
+                        col = col_number[dFrame == "P"])
+  indeterminate <- data.frame(row = row_number[dFrame == "I"],
+                             col = col_number[dFrame == "I"])
   ## Include row offset for column label in Excel sheets
   well_rows <- ((1:nrow(dFrame)) + 1L)[dFrame[ , "wells"] %in%
                               low_positive_controls_df$wells]
@@ -73,21 +69,21 @@ fmt_luminex_results <- function(excel_file, dFrame,
   if (nrow(positive) > 0) {
      addStyle(wb, sheet = sheet_name,
               style = cs_positive, rows = positive$row,
-              cols = positive$col, gridExpand = TRUE)
+              cols = positive$col, gridExpand = FALSE)
   }
   if (nrow(indeterminate) > 0) {
      addStyle(wb, sheet = sheet_name,
               style = cs_indeterminate, rows = indeterminate$row,
-              cols = indeterminate$col, gridExpand = TRUE)
+              cols = indeterminate$col, gridExpand = FALSE)
   }
   if (nrow(to_repeat) > 0) {
      addStyle(wb, sheet = sheet_name,
               style = cs_to_repeat, rows = to_repeat$row,
-              cols = to_repeat$col, gridExpand = TRUE)
+              cols = to_repeat$col, gridExpand = FALSE)
   }
   addStyle(wb, sheet = sheet_name,
           style = cs_header, rows = 1,
-          cols = seq_along(names(dFrame)), gridExpand = TRUE)
+          cols = seq_along(names(dFrame)), gridExpand = FALSE)
   ## Commented out as currently redundant since the styles match
   ##addStyle(wb, sheet = sheet_name,
   ##         style = cs_border_header, rows = 1,
