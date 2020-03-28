@@ -9,7 +9,7 @@ Status](https://travis-ci.org/rmsharp/snprcspf.svg?branch=master)](https://travi
 ## Excel File Formating Is Back
 
 The dependency on XLConnect package and thus Java has been replaced with
-a dependency on openxlsx and thus Perl as of version 1.1.0 of 20200328.
+a dependency on openxlsx and thus Perl as of version 1.1.0 on 20200328.
 
 ## Installation
 
