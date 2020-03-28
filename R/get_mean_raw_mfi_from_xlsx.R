@@ -55,5 +55,5 @@ get_mean_raw_mfi_from_xlsx <- function(conn, file, run_props, run_error) {
     names(content) <- col_names
   }
   content <- content[!is.na(content$sample), ]
-  get_raw_mfi_df(conn, content, file, run_props, run_error)
+  get_raw_mfi_df(conn, content, basename(file), run_props, run_error)
 }

@@ -1,6 +1,7 @@
 library(snprcspf)
 library(stringi)
 library(rmsutilityr)
+library(lubridate)
 
 prefix <- stri_c(stri_replace_all_fixed(stri_replace_all_fixed(
   now(), " ", "_"), ":", "-"), "_")
@@ -41,7 +42,7 @@ sheets_index <- c(3, 4, 5)
 for (i in seq_along(sheets_index)) {
   df_index <- c(4, 4, 5) # normalized sheet gets same format as
   # antigen sheet
-  snprcspf:::format_luminex_results(file, df_list[[df_index[i]]],
+  snprcspf:::fmt_luminex_results(file, df_list[[df_index[i]]],
                          sheetnames[sheets_index[i]],
                          low_positive_controls_df)
 }

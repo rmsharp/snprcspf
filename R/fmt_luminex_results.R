@@ -21,11 +21,11 @@ fmt_luminex_results <- function(excel_file, dFrame,
   ## format cells with highlighting, text wrapping, grey header, and column
   ## specific borders
   wb <- loadWorkbook(excel_file)
-  highlightRed <- rgb(red = 255, green = 150, blue = 150, alpha = 70,
+  highlightRed <- rgb(red = 255, green = 150, blue = 150,
                       maxColorValue = 255)
-  highlightBlue <- rgb(red = 0, green = 191, blue = 255, alpha = 70,
+  highlightBlue <- rgb(red = 0, green = 191, blue = 255,
                        maxColorValue = 255)
-  highlightWheat <- rgb(red = 245, green = 222, blue = 179, alpha = 70,
+  highlightWheat <- rgb(red = 245, green = 222, blue = 179,
                         maxColorValue = 255)
   cs_positive <- createStyle(fgFill = highlightRed, wrapText = TRUE)
   cs_indeterminate <- createStyle(fgFill = highlightBlue, wrapText = TRUE)
