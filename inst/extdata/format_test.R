@@ -11,7 +11,7 @@ file_no_ext <- stri_sub(basename(input_file), 1,
                                                pattern = ".")[[1]] - 1)
 excel_file <- stri_c(prefix, file_no_ext, ".xlsx")
 dfs <- snprcspf::plate166_dfs
-dfs$w_raw_mfi_df$file <- excel_file
+dfs$w_mean_raw_mfi_df$file <- "SPF_Colony_Testing_Plate_166_03-06-20.xlsx"
 dfs$w_mfi_df$file <- dfs$w_raw_mfi_df$file
 dfs$w_d_mfi_df$file <- dfs$w_raw_mfi_df$file
 dfs$w_r_mfi_df$file <- dfs$w_raw_mfi_df$file
