@@ -6,7 +6,9 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Returns the number of records inserted into spf_samples — insert_spf_samples • snprcspf</title>
+<title>plate165_dfs is a loadable version of the dfs list of dataframes
+created by `get_wide_df`
+used by `make_excel_wkbk`. — plate165_dfs • snprcspf</title>
 
 
 <!-- jquery -->
@@ -39,8 +41,12 @@
 
 
 
-<meta property="og:title" content="Returns the number of records inserted into spf_samples — insert_spf_samples" />
-<meta property="og:description" content="Returns the number of records inserted into spf_samples" />
+<meta property="og:title" content="plate165_dfs is a loadable version of the dfs list of dataframes
+created by `get_wide_df`
+used by `make_excel_wkbk`. — plate165_dfs" />
+<meta property="og:description" content="plate165_dfs is a loadable version of the dfs list of dataframes
+created by `get_wide_df`
+used by `make_excel_wkbk`." />
 
 
 
@@ -106,42 +112,34 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Returns the number of records inserted into spf_samples</h1>
+    <h1>plate165_dfs is a loadable version of the dfs list of dataframes
+created by `get_wide_df`
+used by `make_excel_wkbk`.</h1>
     
-    <div class="hidden name"><code>insert_spf_samples.Rd</code></div>
+    <div class="hidden name"><code>plate165_dfs.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Returns the number of records inserted into spf_samples</p>
+    <p>plate165_dfs is a loadable version of the dfs list of dataframes
+created by `get_wide_df`
+used by `make_excel_wkbk`.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>insert_spf_samples</span>(<span class='no'>conn</span>, <span class='no'>spf_samples_df</span>, <span class='no'>run_props</span>, <span class='no'>run_error</span>)</pre>
-
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>conn</th>
-      <td><p>database connection object</p></td>
-    </tr>
-    <tr>
-      <th>spf_samples_df</th>
-      <td><p>dataframe with samples</p></td>
-    </tr>
-    <tr>
-      <th>run_props</th>
-      <td><p>dataframe with four columns ("name", "value",
-"java_data_type", and "location" defined when a Run Properties File provided
-by the system is read by the <code>readRunPropertiesFile()</code> function.</p></td>
-    </tr>
-    <tr>
-      <th>run_error</th>
-      <td><p>list of length 2 having the integer value of the error
-level and the message to be displayed.</p></td>
-    </tr>
-    </table>
+    <pre class="usage"><span class='no'>plate165_dfs</span></pre>
 
 
+    <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
+
+    <p>An object of class <code>list</code> of length 5.</p>
+
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
+<span class='no'>dfs</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>snprcspf</span><span class='kw ns'>::</span><span class='no'>plate165_dfs</span>
+<span class='no'>low_positive_controls_df</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span>()
+<span class='fu'>make_excel_wkbk</span>(<span class='no'>excel_file</span>, <span class='no'>dfs</span>$<span class='no'>w_mean_raw_mfi_df</span>, <span class='no'>dfs</span>$<span class='no'>w_mfi_df</span>,
+                <span class='no'>dfs</span>$<span class='no'>w_d_mfi_df</span>, <span class='no'>dfs</span>$<span class='no'>w_r_mfi_df</span>, <span class='no'>dfs</span>$<span class='no'>w_combined_df</span>,
+                <span class='kw'>low_positive_controls_df</span> <span class='kw'>=</span> <span class='no'>low_positive_controls_df</span>)
+}</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
