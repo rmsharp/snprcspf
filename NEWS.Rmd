@@ -1,7 +1,7 @@
 ---
 title: "NEWS"
 author: "R. Mark Sharp"
-date: "03/28/2020"
+date: "03/29/2020"
 output:
   github_document: default
 
@@ -10,6 +10,9 @@ output:
   ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
+# snprcspf 1.1.1 (20200329)
+-   Moved misplaced unit test file.
+    
 # snprcspf 1.1.0 (20200328)
 -   Have replaced dependence on Java for the Excel formatting. Using openxlsx
     package

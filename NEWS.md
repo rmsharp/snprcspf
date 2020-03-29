@@ -1,7 +1,11 @@
 NEWS
 ================
 R. Mark Sharp
-03/28/2020
+03/29/2020
+
+# snprcspf 1.1.1 (20200329)
+
+  - Moved misplaced unit test file.
 
 # snprcspf 1.1.0 (20200328)
 
