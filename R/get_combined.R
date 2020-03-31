@@ -108,9 +108,9 @@ get_combined <- function(conn, r_mfi_df, file) {
                        add_colony(conn, colony_df),
                        by.x = "snprc_id", by.y = "id", all.x = TRUE)
   combined_df[order(combined_df$row_order),
-              c("file_name", "plate_id", "species", "birth_date", "colony",
+              c("file_name", "plate_id", "species",# "birth_date", "colony",
                 "sample", "snprc_id",
-                "sample_date", "report_date", "repeated", "wells",
+                "sample_date", "report_date", "repeated", #"wells",
                 "procedure_name", "procedure_id",
                 "test_name", "test_id", "agent", "assay_value")]
 }
