@@ -22,7 +22,7 @@ read_sample_file <- function(file_name, conn, run_props, run_error) {
                           blood_expected = character(0),
                           blood_received = character(0),
                           pool_id = character(0))
-  tmp_sample_df <- read_excel(file_name, col_names = TRUE)
+  tmp_sample_df <- suppressMessages(read_excel(file_name, col_names = TRUE))
   tmp_sample_df <- Filter(function(x)!all(is.na(x)), tmp_sample_df)
   sample_col_names <- names(sample_df)
   if (any("pool_id" %in% setdiff(sample_col_names, names(tmp_sample_df)))) {

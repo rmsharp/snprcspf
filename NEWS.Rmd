@@ -1,7 +1,7 @@
 ---
 title: "NEWS"
 author: "R. Mark Sharp"
-date: "03/29/2020"
+date: "03/30/2020"
 output:
   github_document: default
 
@@ -10,6 +10,10 @@ output:
   ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
+
+# snprcspf 1.1.2 (20200330)
+-   Used `suppressMessages` on `read_excel` to suppress the New Name messages
+
 # snprcspf 1.1.1 (20200329)
 -   Moved misplaced unit test file.
     

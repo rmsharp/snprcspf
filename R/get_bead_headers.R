@@ -11,7 +11,7 @@ get_bead_headers <- function(path, files) {
   headers <- list(length(files))
 
   for (i in seq_along(files)) {
-    content <- read_excel(stri_c(path, "/", files[i]))
+    content <- suppressMessages(read_excel(stri_c(path, "/", files[i])))
     content[1] <- stri_replace_all_regex(content[[1]], pattern = "\ ",
                                          replacement = "")
     results <- get_result_tables(content)
