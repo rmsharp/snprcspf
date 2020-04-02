@@ -26,7 +26,7 @@ get_report_date_from_filename <- function(filenames, run_props, run_error) {
     dates[!stri_detect_fixed(tolower(basename(filenames)), "spfcolony")] <-
       tmp_dates
     dates <- mdy_to_yyyymmdd(dates, sep = "-")
-    if (any(is.na(ymd(dates) & is.na(orig_dates)))) {
+    if (any(is.na(ymd(dates)) & is.na(orig_dates))) {
       # errMessage <- stri_c("The file name date is malformed: ",
       #                      get_and_or_list(tmp_dates[is.na(ymd(dates))]))
       triggerError(run_props, run_error, "The file name date is malformed")
