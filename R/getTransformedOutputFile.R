@@ -7,7 +7,7 @@
 getTransformedOutputFile <- function(run_props) {
   value <- NA
   if (any(run_props$name == "runDataFile")) {
-    value <- run_props$value[run_props$name == "runDataFile"]
+    value <- run_props$location[run_props$name == "runDataFile"]
     # return NA for an empty string
     if (nchar(value) == 0) {
       value <- NA
