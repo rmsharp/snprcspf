@@ -32,6 +32,18 @@
 #' basename(plate166_r_mfi_df$file)
 #' }
 "plate166_r_mfi_df"
+#' plate165_dfs is a loadable version of the dfs list of dataframes
+#' created by `get_wide_df`
+#' used by `make_excel_wkbk`.
+#' @examples
+#' \dontrun{
+#' dfs <- snprcspf::plate165_dfs
+#' low_positive_controls_df <- data.frame()
+#' make_excel_wkbk(excel_file, dfs$w_mean_raw_mfi_df, dfs$w_mfi_df,
+#'                 dfs$w_d_mfi_df, dfs$w_r_mfi_df, dfs$w_combined_df,
+#'                 low_positive_controls_df = low_positive_controls_df)
+#' }
+"plate165_dfs"
 #' plate166_dfs is a loadable version of the dfs list of dataframes
 #' created by `get_wide_df`
 #' used by `make_excel_wkbk`.

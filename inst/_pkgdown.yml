@@ -2,6 +2,7 @@ reference:
 - title: "Data objects"
   desc: ~
   contents:
+  - '`plate165_dfs`'
   - '`plate165_mean_raw_mfi_df`'
   - '`plate166_combined_df`'
   - '`plate166_dfs`'
@@ -20,6 +21,7 @@ reference:
   - '`create_spf_samples_tbl`'
   - '`divisors_match`'
   - '`fix_pdl_csv_columns`'
+  - '`fmt_luminex_results`'
   - '`get_agents_and_antigen_pairs`'
   - '`get_all_combined`'
   - '`get_all_df`'

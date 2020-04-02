@@ -9,10 +9,10 @@
 #' @export
 mdy_to_yyyymmdd <- function(dates, sep = "") {
   dates <- stri_replace_all_fixed(dates, "/", "-")
-  dates <- sapply(dates, function(.date) {
+  dates <- sapply(dates, function(dateString) {
 
-    if (!is.na(.date) & stri_detect_fixed(.date, "-")) {
-      tmp <- stri_split_fixed(.date, "-")[[1]]
+    if (!is.na(dateString) & stri_detect_fixed(dateString, "-")) {
+      tmp <- stri_split_fixed(dateString, "-")[[1]]
       if (length(tmp) == 3) {
         tmp[1] <- stri_sub(stri_c("0", tmp[1], collapse = ""), -2, 3)
         tmp[2] <- stri_sub(stri_c("0", tmp[2], collapse = ""), -2, 3)
@@ -23,11 +23,11 @@ mdy_to_yyyymmdd <- function(dates, sep = "") {
             tmp[3] <- stri_c("19", tmp[3])
           }
         }
-        .date <- stri_c(tmp[3], sep, tmp[1], sep, tmp[2], collapse = "")
+        dateString <- stri_c(tmp[3], sep, tmp[1], sep, tmp[2], collapse = "")
       }
-      .date
+      dateString
     }
-    .date
+    dateString
   })
   names(dates) <- NULL
   dates

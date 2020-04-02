@@ -16,13 +16,13 @@ knitr::opts_chunk$set(
 
 # snprcspf -- Version `r snprcspf::get_version()`
 
-## Disabled Excel File Formating
-As of 2019 May 26, Java 12 has a bug \url{https://bugs.openjdk.java.net/browse/JDK-8221530}
-that prevents the use of the XLConnect package. This version of snprcspf has removed that 
-dependency with the side effect of not providing formating within the Excel workbook 
-generated.
+## Excel File Formating Is Back
+The dependency on XLConnect package and thus Java has been replaced with 
+a dependency on openxlsx and thus Perl as of version 1.1.0 on 20200328.
+
 
 ```{r child = "installation.Rmd", ref = "installation"}
 ```
 
-Find online documentation at [https://rmsharp.github.io/snprcspf/](https://rmsharp.github.io/snprcspf/).
+Find online documentation at
+[https://rmsharp.github.io/snprcspf/](https://rmsharp.github.io/snprcspf/).

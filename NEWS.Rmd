@@ -1,7 +1,7 @@
 ---
 title: "NEWS"
 author: "R. Mark Sharp"
-date: "03/21/2020"
+date: "03/30/2020"
 output:
   github_document: default
 
@@ -10,6 +10,19 @@ output:
   ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
+
+# snprcspf 1.1.2 (20200330)
+-   Used `suppressMessages` on `read_excel` to suppress the New Name messages
+
+# snprcspf 1.1.1 (20200329)
+-   Moved misplaced unit test file.
+    
+# snprcspf 1.1.0 (20200328)
+-   Have replaced dependence on Java for the Excel formatting. Using openxlsx
+    package
+-   Have cleaned up code for file name and file path management for the Excel
+    input file names and paths
+
 # snprcspf 1.0.9 (20200321)
 -   Copied build instructions from nprcgenekeepr
 -   Removed redundant copy of a function.
@@ -22,3 +35,9 @@ knitr::opts_chunk$set(echo = TRUE)
 # snprcspf 1.0.7 (20190526)
 -   Removed formating of Excel sheets to remove dependency on rJava used by
     XLConnect.
+    As of 2019 May 26, Java 12 has a bug 
+    \url{https://bugs.openjdk.java.net/browse/JDK-8221530} that prevents 
+    the use of the XLConnect package. This version of snprcspf has removed 
+    that dependency with the side effect of not providing formating within 
+    the Excel workbook generated.
+

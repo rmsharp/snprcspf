@@ -6,7 +6,9 @@
 \title{plate166_mean_raw_mfi_df is a loadable version of the mean_raw_mfi_df dataframe
 created by `get_mean_raw_mfi_from_xlsx` or `get_mean_raw_mfi_from_lxd` and
 used by `get_low_positive_controls` and `subtract_background`.}
-\format{An object of class \code{data.frame} with 1248 rows and 8 columns.}
+\format{
+An object of class \code{data.frame} with 1248 rows and 8 columns.
+}
 \usage{
 plate166_mean_raw_mfi_df
 }

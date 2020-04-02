@@ -1,8 +1,8 @@
 Package: snprcspf
 Type: Package
 Title: SNPRC SPF Colony Screening Data Software Tool Package
-Version: 1.0.9
-Date: 2020-03-21
+Version: 1.1.2
+Date: 2020-03-30
 Authors@R: person("R. Mark", "Sharp", email = "rmsharp@me.com", , 
     role = c("aut", "ctb", "cre"))
 Description: Provides tools for working with SNPRC SPF Colony Screening Data.
@@ -10,7 +10,7 @@ Depends:
     R (>= 3.5.0)
 Imports:
     animalr,
-    lubridate,
+    lubridate, 
     openxlsx,
     readxl,
     reshape2,
@@ -33,6 +33,6 @@ Language: en-US
 License: MIT + file LICENSE
 LazyData: TRUE
 VignetteBuilder: knitr
-RoxygenNote: 7.0.2
+RoxygenNote: 7.1.0
 Encoding: UTF-8
 Cache: packages

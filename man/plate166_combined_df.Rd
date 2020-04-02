@@ -6,7 +6,9 @@
 \title{combined_df is a loadable version of the combined_df dataframe
 created by `get_combined`
 used by `get_wide_df`, `print_bad_animal_ids` and `print_bad_sample_dates`.}
-\format{An object of class \code{data.frame} with 552 rows and 17 columns.}
+\format{
+An object of class \code{data.frame} with 552 rows and 17 columns.
+}
 \usage{
 plate166_combined_df
 }

@@ -10,7 +10,7 @@
 ## ## @importFrom stats complete.cases
 ## ## @import XLConnect
 ## ## @export
-## format_luminex_results <- function(excel_file, .df,
+## depricated_format_luminex_results <- function(excel_file, .df,
 ##                                    sheet_name = "final_result",
 ##                                    low_positive_controls_df) {
 ##   ## set-rows

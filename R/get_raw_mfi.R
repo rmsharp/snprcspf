@@ -24,7 +24,7 @@ get_raw_mfi <- function(conn, file) {
   ids <- as.character(
     unlist(getNodeSet(plate, "//Well//RSts[@id != '0']/@id")))
   raw_mfi <- data.frame(
-    file = rep(file, length(ids)),
+    file = rep(basename(file), length(ids)),
     sample = rep(well_names, 1, each = nrow(region_df)),
     well_row = rep(well_rows, 1, each = nrow(region_df)),
     well_col = rep(well_cols, 1, each = nrow(region_df)),
