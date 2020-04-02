@@ -7,16 +7,16 @@
 #' by the system is read by the \code{readRunPropertiesFile()} function.
 #' @param run_error list of length 2 having the integer value of the error
 #' level and the message to be displayed.
-#' @import readxl
+#' @import openxlsx
 #' @import rmsutilityr
 #' @import stringi
 #' @export
 get_mean_raw_mfi_from_xlsx <- function(conn, file, run_props, run_error) {
-  sheet_names <- excel_sheets(file)
+  sheet_names <- getSheetNames(file)
   if (any(stri_detect_regex(toupper(sheet_names), "^MAC"))) {
     if (any(stri_detect_fixed(toupper(sheet_names), "MFI AVERAGE"))) {
       ## It is a "raw" (XML renamed with MAC TRACK worksheet added) Excel file
-      content <- suppressMessages(read_excel(file, sheet = "MFI AVERAGE"))
+      content <- read.xlsx(file, sheet = "MFI AVERAGE")
       col_names <- names(content)
       col_names[1] <- "sample"
       col_names[2] <- "wells"
@@ -34,7 +34,7 @@ get_mean_raw_mfi_from_xlsx <- function(conn, file, run_props, run_error) {
                 The worksheets found were ",
                 get_and_or_list(sheet_names), "."))
   } else {# It is a Report style formated file
-    content <- suppressMessages(read_excel(file))
+    content <- read.xlsx(file)
     content[1] <- stri_replace_all_regex(content[[1]], pattern = "\ ",
                                          replacement = "")
     #results <- get_result_tables(content)

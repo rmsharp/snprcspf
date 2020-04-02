@@ -3,7 +3,6 @@
 #'
 #' @param results character vector with results section of the Luminex file
 #' being analyzed.
-#' @import readxl
 #' @import stringi
 #' @export
 get_excel_divisors <- function(results) {

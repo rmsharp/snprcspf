@@ -7,6 +7,7 @@
 #' @param .fun the function object to be used to collect combined results.
 #' @param col_names character vector of column names in the order they are to
 #' appear.
+#' @importFrom openxlsx read.xlsx
 #' @import stringi
 #' @export
 get_all_df <- function(path = "../inst/extdata/", .fun = get_summary_df,
@@ -17,7 +18,7 @@ get_all_df <- function(path = "../inst/extdata/", .fun = get_summary_df,
   names(all_df) <- col_names
 
   for (file in files) {
-    content <- suppressMessages(read_excel(stri_c(path, "/", file)))
+    content <- read.xlsx(stri_c(path, "/", file))
     content[1] <- stri_replace_all_regex(content[[1]], pattern = "\ ",
                                          replacement = "")
     results <- get_result_tables(content)

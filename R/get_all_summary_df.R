@@ -5,6 +5,7 @@
 #' @param path file path to directory containing files to be read.
 #' @param col_names character vector of column names in the order they are to
 #' appear.
+#' @importFrom openxlsx read.xlsx
 #' @import stringi
 #' @export
 get_all_summary_df <- function(path = "../inst/extdata/",
@@ -16,7 +17,7 @@ get_all_summary_df <- function(path = "../inst/extdata/",
   names(all_summary_df) <- col_names
 
   for (file in files) {
-    content <- suppressMessages(read_excel(stri_c(path, "/", file)))
+    content <- read.xlsx(stri_c(path, "/", file))
     content[1] <- stri_replace_all_regex(content[[1]], pattern = "\ ",
                                          replacement = "")
     results <- get_result_tables(content)
