@@ -7,6 +7,22 @@ output: html_document
 
 ## Installation
 
+### Github.com Installation
+
+It is much easier to install directly from
+[github.com/rmsharp/snprcspf](https://github.com/rmsharp/snprcspf) as all of 
+the dependencies are automatically installed as well.
+
+You can install **snprcspf** from github with:
+
+```{r gh-installation, eval = FALSE}
+install.packages("devtools")
+devtools::install_github("rmsharp/snprcspf")
+
+```
+
+All missing dependencies should be automatically installed.
+
 ### Installation from Source
 There are two local source packages that must be installed prior to installing
 __snprcspf__.
@@ -56,18 +72,3 @@ install_from_source(source_names, source_path, install_path)
 
 ```
 
-### Github.com Installation
-
-It is much easier to install directly from
-[github.com/rmsharp/snprcspf](https://github.com/rmsharp/snprcspf) as all of 
-the dependencies are automatically installed as well.
-
-You can install **snprcspf** from github with:
-
-```{r gh-installation, eval = FALSE}
-install.packages("devtools")
-devtools::install_github("rmsharp/snprcspf")
-
-```
-
-All missing dependencies should be automatically installed.

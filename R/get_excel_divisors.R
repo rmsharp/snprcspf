@@ -22,8 +22,11 @@ get_excel_divisors <- function(results) {
   cutoff_col <- (1:length(row))[stri_detect_fixed(tolower(row), "cutoff")]
   start <- start + 1
   results <- data.frame(results[start:nrow(results), ])
-  rows <- 1:(which(is.na(results[ , name_col]))[1] - 1)
-  #rows <- seq_along(results[ , name_col][!is.na(results[ , name_col])])
+  if (any(is.na(results[ , name_col]))) {
+    rows <- 1:(which(is.na(results[ , name_col]))[1] - 1)
+  } else {
+    rows <- seq_along(results[ , name_col][!is.na(results[ , name_col])])
+  }
   divisors <- results[rows, cutoff_col]
   divisors <- as.numeric(divisors)
   divisor_names <- results[rows, name_col]

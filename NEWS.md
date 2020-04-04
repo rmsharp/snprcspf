@@ -1,7 +1,19 @@
 NEWS
 ================
 R. Mark Sharp
-03/29/2020
+03/30/2020
+
+# snprcspf 1.1.5 (20200403)
+
+  - Changed positive cell markup to yellow characters and red background
+  - Changed to a conditional test for NA delimited columns of the
+    divisor data. read\_excel, which had been used, always added NA
+    values. read.xlsx does not.
+
+# snprcspf 1.1.2 (20200330)
+
+  - Used `suppressMessages` on `read_excel` to suppress the New Name
+    messages
 
 # snprcspf 1.1.1 (20200329)
 

@@ -4,7 +4,7 @@
 Status](https://travis-ci.org/rmsharp/snprcspf.svg?branch=master)](https://travis-ci.org/rmsharp/snprcspf)
 [![codecov](https://codecov.io/gh/rmsharp/snprcspf/branch/master/graph/badge.svg)](https://codecov.io/gh/rmsharp/snprcspf)
 
-# snprcspf – Version 1.1.3 (20200402)
+# snprcspf – Version 1.1.5 (20200403)
 
 ## Excel File Formating Is Back
 
@@ -12,6 +12,21 @@ The dependency on XLConnect package and thus Java has been replaced with
 a dependency on openxlsx and thus Perl as of version 1.1.0 on 20200328.
 
 ## Installation
+
+### Github.com Installation
+
+It is much easier to install directly from
+[github.com/rmsharp/snprcspf](https://github.com/rmsharp/snprcspf) as
+all of the dependencies are automatically installed as well.
+
+You can install **snprcspf** from github with:
+
+``` r
+install.packages("devtools")
+devtools::install_github("rmsharp/snprcspf")
+```
+
+All missing dependencies should be automatically installed.
 
 ### Installation from Source
 
@@ -63,20 +78,5 @@ update.packages(lib.loc = lib_path,
 
 install_from_source(source_names, source_path, install_path)
 ```
-
-### Github.com Installation
-
-It is much easier to install directly from
-[github.com/rmsharp/snprcspf](https://github.com/rmsharp/snprcspf) as
-all of the dependencies are automatically installed as well.
-
-You can install **snprcspf** from github with:
-
-``` r
-install.packages("devtools")
-devtools::install_github("rmsharp/snprcspf")
-```
-
-All missing dependencies should be automatically installed.
 
 Find online documentation at <https://rmsharp.github.io/snprcspf/>.
