@@ -7,7 +7,7 @@
 #' @param run_error list of length 2 having the integer value of the error
 #' level and the message to be displayed.
 #' @param msg character string containing the warning message
-#' @import stringi
+#' @importFrom stringi stri_c
 #' @export
 triggerWarning <- function(run_props, run_error, msg) {
   run_error$level <- setMaxSeverity(run_props, run_error, level = 1)

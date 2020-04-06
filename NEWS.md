@@ -3,6 +3,12 @@ NEWS
 R. Mark Sharp
 03/30/2020
 
+# snprcspf 1.1.6 (20200406)
+
+  - Changed default blank replacement from “.” to " " in calls to
+    read.xlsx(). The period were causing the column match routines to
+    fail.
+
 # snprcspf 1.1.5 (20200403)
 
   - Changed positive cell markup to yellow characters and red background

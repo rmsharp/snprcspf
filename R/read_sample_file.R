@@ -11,7 +11,8 @@
 #' by the system is read by the \code{readRunPropertiesFile()} function.
 #' @param run_error list of length 2 having the integer value of the error
 #' level and the message to be displayed.
-#' @import openxlsx
+#' @importFrom openxlsx read.xlsx
+#' @importFrom rmsutilityr get_and_or_list
 #' @import stringi
 #' @export
 read_sample_file <- function(file_name, conn, run_props, run_error) {
@@ -22,7 +23,8 @@ read_sample_file <- function(file_name, conn, run_props, run_error) {
                           blood_expected = character(0),
                           blood_received = character(0),
                           pool_id = character(0))
-  tmp_sample_df <- read.xlsx(file_name, colNames = TRUE)
+  tmp_sample_df <- read.xlsx(file_name, colNames = TRUE, check.names = FALSE,
+                             sep.names = " ")
   tmp_sample_df <- Filter(function(x)!all(is.na(x)), tmp_sample_df)
   sample_col_names <- names(sample_df)
   if (any("pool_id" %in% setdiff(sample_col_names, names(tmp_sample_df)))) {
@@ -34,13 +36,13 @@ read_sample_file <- function(file_name, conn, run_props, run_error) {
     tmp_sample_df <- tmp_sample_df[ , -1] # remove unused row number
   } else if (pooled_samples &
              !length(tmp_sample_df) == (length(sample_col_names) - 1)) {
-    triggerError(stri_c("File: ", file_name,
+    triggerError(run_props, run_error, msg = stri_c("File: ", file_name,
                         " does not have the correct number of columns. ",
                         "It should have the following columns: ",
                         get_and_or_list(sample_col_names[-1]), "."))
   } else if (!pooled_samples &
              !length(tmp_sample_df) == (length(sample_df) - 2)) {
-    triggerError(
+    triggerError(run_props, run_error,
       stri_c("File: ", file_name,
              " does not have the correct number of columns. ",
              "It should have the following columns: ",

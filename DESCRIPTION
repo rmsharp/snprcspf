@@ -1,8 +1,8 @@
 Package: snprcspf
 Type: Package
 Title: SNPRC SPF Colony Screening Data Software Tool Package
-Version: 1.1.5
-Date: 2020-04-03
+Version: 1.1.6
+Date: 2020-04-06
 Authors@R: person("R. Mark", "Sharp", email = "rmsharp@me.com", , 
     role = c("aut", "ctb", "cre"))
 Description: Provides tools for working with SNPRC SPF Colony Screening Data.

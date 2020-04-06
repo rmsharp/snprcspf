@@ -4,7 +4,7 @@
 Status](https://travis-ci.org/rmsharp/snprcspf.svg?branch=master)](https://travis-ci.org/rmsharp/snprcspf)
 [![codecov](https://codecov.io/gh/rmsharp/snprcspf/branch/master/graph/badge.svg)](https://codecov.io/gh/rmsharp/snprcspf)
 
-# snprcspf – Version 1.1.5 (20200403)
+# snprcspf – Version 1.1.6 (20200406)
 
 ## Excel File Formating Is Back
 

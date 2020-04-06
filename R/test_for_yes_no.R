@@ -13,8 +13,8 @@
 #' by the system is read by the \code{readRunPropertiesFile()} function.
 #' @param run_error list of length 2 having the integer value of the error
 #' level and the message to be displayed.
-#' @import rmsutilityr
-#' @import stringi
+#' @importFrom rmsutilityr get_and_or_list
+#' @importFrom stringi stri_c
 #' @export
 test_for_yes_no <- function(expected, file_name, col_name, run_props,
                             run_error) {

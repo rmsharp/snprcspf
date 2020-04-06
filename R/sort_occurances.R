@@ -7,7 +7,7 @@
 #'
 #' @param followup_df dataframe with all records.
 #' @return sorted \code{followup_df} as \code{sorted_df}
-#' @import stringi
+#' @importFrom stringi stri_detect_fixed
 #' @export
 sort_occurances <- function(followup_df) {
   f_df <- followup_df[stri_detect_fixed(followup_df$flag, "FIRST"), ]

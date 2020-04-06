@@ -2,7 +2,6 @@
 #' if anticipated labels are not present
 #'
 #' @param content character vector that has lines of report with data.
-#' @import stringi
 #' @export
 strip_column_labels <- function(content) {
   new <- character(length(content))

@@ -1,7 +1,8 @@
 #' Returns Plate[@@plateID] (plateID attribute of the Plate node.)
 #'
 #' @param lum XML object
-#' @import XML
+#' @importFrom stringi stri_c
+#' @importFrom XML getNodeSet xmlAttrs
 #' @export
 get_plateID <- function(lum) {
   node <- getNodeSet(lum, "//Plate")

@@ -17,7 +17,8 @@ get_all_summary_df <- function(path = "../inst/extdata/",
   names(all_summary_df) <- col_names
 
   for (file in files) {
-    content <- read.xlsx(stri_c(path, "/", file))
+    content <- read.xlsx(stri_c(path, "/", file), check.names = FALSE,
+                         sep.names = " ")
     content[1] <- stri_replace_all_regex(content[[1]], pattern = "\ ",
                                          replacement = "")
     results <- get_result_tables(content)

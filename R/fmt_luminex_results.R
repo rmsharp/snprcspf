@@ -36,13 +36,6 @@ fmt_luminex_results <- function(excel_file, dFrame,
   cs_header <- createStyle(fgFill = "grey85", wrapText = TRUE)
   cs_border_header <- createStyle(fgFill = "grey85", wrapText = TRUE)
 
-  ## set-fill
-  ## setFillPattern(cs_positive, fill = XLC$FILL.SOLID_FOREGROUND)
-  ## setFillPattern(cs_indeterminate, fill = XLC$FILL.SOLID_FOREGROUND)
-  ## setFillPattern(cs_to_repeat, fill = XLC$FILL.SOLID_FOREGROUND)
-  ## setFillPattern(cs_header, fill = XLC$FILL.SOLID_FOREGROUND)
-  ## setFillPattern(cs_border_header, fill = XLC$FILL.SOLID_FOREGROUND)
-
   ## make-matrices
   ## Include row offset for column label in Excel sheets
   row_number <- matrix(data = rep(1:nrow(dFrame), each = ncol(dFrame)),
@@ -90,7 +83,6 @@ fmt_luminex_results <- function(excel_file, dFrame,
   ##addStyle(wb, sheet = sheet_name,
   ##         style = cs_border_header, rows = 1,
   ##         cols = seq_along(names(dFrame)), gridExpand = TRUE)
-  ## save-wb
   saveWorkbook(wb, file = excel_file, overwrite = TRUE)
 
   excel_file

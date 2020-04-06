@@ -11,9 +11,9 @@
 #' by the system is read by the \code{readRunPropertiesFile()} function.
 #' @param run_error list of length 2 having the integer value of the error
 #' level and the message to be displayed.
-#' @import animalr
-#' @import rmsutilityr
-#' @import stringi
+#' @importFrom animalr is_primate_id
+#' @importFrom rmsutilityr get_and_or_list
+#' @importFrom stringi stri_c
 #' @export
 test_for_snprc_id <- function(snprc_id, file_name, conn, run_props, run_error) {
   not_primate <- !is_primate_id(conn, snprc_id)
