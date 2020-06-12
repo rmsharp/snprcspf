@@ -6,18 +6,25 @@
 #' "P" results
 #'
 #' @param excel_file character vector with the name of the Excel file
-#' @param dFrame dataframe being used to guide highlighting. It is the same
-#' one as was used to make the worksheet.
-#' @param sheet_name name of the worksheet to highlight.
+#' @param df_list List of dataframes used as the source data for formating and
+#' for writing the Excel file worksheet. The two (data controlling formating
+#' and data written)  may not be the same.
+#' @param fmtIndexNum Index into the list of dataframes (\code{df_list} used to
+#' guide format highlighting.
+#' @param wrkSheetIndex Index into the list of dataframes (\code{df_list} used
+#' to write the data into the worksheet.
+#' @param sheet_name name of the worksheet to be written and highlighted.
 #' @param low_positive_controls_df dataframe with the low positive controls
 #'
 #' @importFrom grDevices rgb
 #' @importFrom stats complete.cases
 #' @importFrom openxlsx loadWorkbook createStyle writeData addStyle saveWorkbook
 #' @export
-fmt_luminex_results <- function(excel_file, dFrame,
+fmt_luminex_results <- function(excel_file, df_list, fmtIndexNum, wrkSheetIndex,
                                 sheet_name = "final_result",
                                 low_positive_controls_df) {
+  fmtData <- df_list[[fmtIndexNum]]
+  wrkSheetData <- df_list[[wrkSheetIndex]]
   ## format cells with highlighting, text wrapping, grey header, and column
   ## specific borders
   wb <- loadWorkbook(excel_file)
@@ -38,29 +45,34 @@ fmt_luminex_results <- function(excel_file, dFrame,
 
   ## make-matrices
   ## Include row offset for column label in Excel sheets
-  row_number <- matrix(data = rep(1:nrow(dFrame), each = ncol(dFrame)),
-                        nrow = nrow(dFrame),
-                        ncol = ncol(dFrame), byrow = TRUE) + 1L
-  col_number <- matrix(data = rep(1:ncol(dFrame), each = nrow(dFrame)),
-                        nrow = nrow(dFrame),
-                        ncol = ncol(dFrame))
+  row_number <- matrix(data = rep(1:nrow(fmtData), each = ncol(fmtData)),
+                        nrow = nrow(fmtData),
+                        ncol = ncol(fmtData), byrow = TRUE) + 1L
+  col_number <- matrix(data = rep(1:ncol(fmtData), each = nrow(fmtData)),
+                        nrow = nrow(fmtData),
+                        ncol = ncol(fmtData))
 
-  positive <- data.frame(row = row_number[dFrame == "P"],
-                        col = col_number[dFrame == "P"])
-  indeterminate <- data.frame(row = row_number[dFrame == "I"],
-                             col = col_number[dFrame == "I"])
+  positive <- data.frame(row = row_number[fmtData == "P"],
+                        col = col_number[fmtData == "P"])
+  indeterminate <- data.frame(row = row_number[fmtData == "I"],
+                             col = col_number[fmtData == "I"])
   ## Include row offset for column label in Excel sheets
-  well_rows <- ((1:nrow(dFrame)) + 1L)[dFrame[ , "wells"] %in%
+  well_rows <- ((1:nrow(fmtData)) + 1L)[fmtData[ , "wells"] %in%
                               low_positive_controls_df$wells]
   to_repeat <- data.frame(
-    row = rep(well_rows, ncol(dFrame)),
-    col = rep(1:ncol(dFrame), each = length(well_rows)))
+    row = rep(well_rows, ncol(fmtData)),
+    col = rep(1:ncol(fmtData), each = length(well_rows)))
 
   positive <- positive[complete.cases(positive), ]
   indeterminate <- indeterminate[complete.cases(indeterminate), ]
   ## set-style
-  writeData(wb, sheet = sheet_name, x = dFrame, borders = "none",
-           borderStyle = "thin")
+  writeData(
+    wb,
+    sheet = sheet_name,
+    x = wrkSheetData,
+    borders = "none",
+    borderStyle = "thin"
+  )
   if (nrow(positive) > 0) {
      addStyle(wb, sheet = sheet_name,
               style = cs_positive, rows = positive$row,
@@ -78,11 +90,11 @@ fmt_luminex_results <- function(excel_file, dFrame,
   }
   addStyle(wb, sheet = sheet_name,
           style = cs_header, rows = 1,
-          cols = seq_along(names(dFrame)), gridExpand = FALSE)
+          cols = seq_along(names(fmtData)), gridExpand = FALSE)
   ## Commented out as currently redundant since the styles match
   ##addStyle(wb, sheet = sheet_name,
   ##         style = cs_border_header, rows = 1,
-  ##         cols = seq_along(names(dFrame)), gridExpand = TRUE)
+  ##         cols = seq_along(names(fmtData)), gridExpand = TRUE)
   saveWorkbook(wb, file = excel_file, overwrite = TRUE)
 
   excel_file
