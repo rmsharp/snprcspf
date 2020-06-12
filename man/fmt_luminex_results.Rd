@@ -7,7 +7,9 @@ side effect.}
 \usage{
 fmt_luminex_results(
   excel_file,
-  dFrame,
+  df_list,
+  fmtIndexNum,
+  wrkSheetIndex,
   sheet_name = "final_result",
   low_positive_controls_df
 )
@@ -15,10 +17,17 @@ fmt_luminex_results(
 \arguments{
 \item{excel_file}{character vector with the name of the Excel file}
 
-\item{dFrame}{dataframe being used to guide highlighting. It is the same
-one as was used to make the worksheet.}
+\item{df_list}{List of dataframes used as the source data for formating and
+for writing the Excel file worksheet. The two (data controlling formating
+and data written)  may not be the same.}
 
-\item{sheet_name}{name of the worksheet to highlight.}
+\item{fmtIndexNum}{Index into the list of dataframes (\code{df_list} used to
+guide format highlighting.}
+
+\item{wrkSheetIndex}{Index into the list of dataframes (\code{df_list} used
+to write the data into the worksheet.}
+
+\item{sheet_name}{name of the worksheet to be written and highlighted.}
 
 \item{low_positive_controls_df}{dataframe with the low positive controls}
 }

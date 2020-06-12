@@ -15,7 +15,7 @@
 #' \code{wells}, and \code{val} columns that identify the well with low
 #' positive control values (<5000 for Human or Goat IgG).
 #'
-#' @import rmsutilityr
+#' @importFrom rmsutilityr create_wkbk
 #' @export
 make_excel_wkbk <- function(file, w_raw_mfi_df, w_mfi_df, w_d_mfi_df,
                             w_r_mfi_df, w_combined_df,
@@ -58,12 +58,15 @@ make_excel_wkbk <- function(file, w_raw_mfi_df, w_mfi_df, w_d_mfi_df,
   create_wkbk(file, df_list, sheetnames)
   sheets_index <- c(3, 4, 5)
   for (i in seq_along(sheets_index)) {
-   df_index <- c(4, 4, 5) # normalized sheet gets same format as
-                                 # antigen sheet
-   fmt_luminex_results(excel_file = file,
-                          dFrame = df_list[[df_index[i]]],
-                          sheet_name = sheetnames[sheets_index[i]],
-                          low_positive_controls_df = low_positive_controls_df)
+    df_index <- c(4, 4, 5) # normalized sheet gets same format as antigen sheet
+    fmt_luminex_results(
+      excel_file = file,
+      df_list = df_list,
+      fmtIndexNum = df_index[i],
+      wrkSheetIndex = sheets_index[i],
+      sheet_name = sheetnames[sheets_index[i]],
+      low_positive_controls_df = low_positive_controls_df
+    )
   }
   file
 }
