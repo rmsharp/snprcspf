@@ -4,12 +4,7 @@
 Status](https://travis-ci.org/rmsharp/snprcspf.svg?branch=master)](https://travis-ci.org/rmsharp/snprcspf)
 [![codecov](https://codecov.io/gh/rmsharp/snprcspf/branch/master/graph/badge.svg)](https://codecov.io/gh/rmsharp/snprcspf)
 
-# snprcspf – Version 1.1.6 (20200406)
-
-## Excel File Formating Is Back
-
-The dependency on XLConnect package and thus Java has been replaced with
-a dependency on openxlsx and thus Perl as of version 1.1.0 on 20200328.
+# snprcspf – Version 1.1.7.9000 (20200613)
 
 ## Installation
 

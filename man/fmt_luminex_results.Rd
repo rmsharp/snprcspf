@@ -37,6 +37,13 @@ non-negative results in the sheet indicated. This highlights "I" and
 "P" results
 }
 \description{
-Conditionally formats a worksheet based on data within the dataframe as a
-side effect.
+This function is used for it's side effects. It takes an Excel workbook
+(\code{excel_file}), a list of dataframes (\code{df_list}),
+an index (\code{fmtIndexNum}) to the dataframe list to
+indicate the dataframe to be used for conditional formating, an index
+(\code{wrkSheetIndex}) to the dataframe list to indicate the dataframe to
+be written into the workbook and then the formatting will be applied to it,
+the worksheet name (\code{sheet_name}) of the worksheet being written, and
+the dataframe containing values for the low positive controls
+(\code{low_positive_controles_df})
 }

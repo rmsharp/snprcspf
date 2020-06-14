@@ -3,6 +3,18 @@ NEWS
 R. Mark Sharp
 03/30/2020
 
+# snprcspf 1.1.7.9000 (20200613)
+
+  - Added some better description of fmt\_luminex\_results().
+
+# snprcspf 1.1.7 (20200612)
+
+  - Corrected bug in fmt\_luminex\_results() that was saving the data
+    used to control formating of the worksheet to the worksheet instead
+    of the dataframe that was supposed to be written. Some refactoring
+    of code was also done to make the side effects of the function more
+    easily understood.
+
 # snprcspf 1.1.6 (20200406)
 
   - Changed default blank replacement from “.” to " " in calls to

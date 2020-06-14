@@ -1,6 +1,16 @@
 #' Conditionally formats a worksheet based on data within the dataframe as a
 #' side effect.
 #'
+#' This function is used for it's side effects. It takes an Excel workbook
+#' (\code{excel_file}), a list of dataframes (\code{df_list}),
+#' an index (\code{fmtIndexNum}) to the dataframe list to
+#' indicate the dataframe to be used for conditional formating, an index
+#' (\code{wrkSheetIndex}) to the dataframe list to indicate the dataframe to
+#' be written into the workbook and then the formatting will be applied to it,
+#' the worksheet name (\code{sheet_name}) of the worksheet being written, and
+#' the dataframe containing values for the low positive controls
+#' (\code{low_positive_controles_df})
+#'
 #' @return Excel file name of file that has been formatted to highlight
 #' non-negative results in the sheet indicated. This highlights "I" and
 #' "P" results
@@ -28,6 +38,8 @@ fmt_luminex_results <- function(excel_file, df_list, fmtIndexNum, wrkSheetIndex,
   ## format cells with highlighting, text wrapping, grey header, and column
   ## specific borders
   wb <- loadWorkbook(excel_file)
+
+  ## Define the colors used
   highlightRed <- rgb(red = 255, green = 0, blue = 0,
                       maxColorValue = 255)
   highlightBlue <- rgb(red = 0, green = 191, blue = 255,
@@ -35,20 +47,23 @@ fmt_luminex_results <- function(excel_file, df_list, fmtIndexNum, wrkSheetIndex,
   highlightWheat <- rgb(red = 245, green = 222, blue = 179,
                         maxColorValue = 255)
   fontYellow <- rgb(red = 255, green = 255, blue = 0, maxColorValue = 255)
+
+  ## Create the styles to be used
   cs_positive <- createStyle(fgFill = highlightRed, fontColour = fontYellow,
                              wrapText = TRUE)
   cs_indeterminate <- createStyle(fgFill = highlightBlue, wrapText = TRUE)
-  cs_to_repeat <- createStyle(fgFill = highlightWheat, wrapText = TRUE) # low positive control wells
+  # low positive control wells
+  cs_to_repeat <- createStyle(fgFill = highlightWheat, wrapText = TRUE)
   ## set-rows
   cs_header <- createStyle(fgFill = "grey85", wrapText = TRUE)
   cs_border_header <- createStyle(fgFill = "grey85", wrapText = TRUE)
 
   ## make-matrices
   ## Include row offset for column label in Excel sheets
-  row_number <- matrix(data = rep(1:nrow(fmtData), each = ncol(fmtData)),
+  row_number <- matrix(data = rep(seq_len(nrow(fmtData)), each = ncol(fmtData)),
                         nrow = nrow(fmtData),
                         ncol = ncol(fmtData), byrow = TRUE) + 1L
-  col_number <- matrix(data = rep(1:ncol(fmtData), each = nrow(fmtData)),
+  col_number <- matrix(data = rep(seq_len(ncol(fmtData)), each = nrow(fmtData)),
                         nrow = nrow(fmtData),
                         ncol = ncol(fmtData))
 
@@ -57,11 +72,11 @@ fmt_luminex_results <- function(excel_file, df_list, fmtIndexNum, wrkSheetIndex,
   indeterminate <- data.frame(row = row_number[fmtData == "I"],
                              col = col_number[fmtData == "I"])
   ## Include row offset for column label in Excel sheets
-  well_rows <- ((1:nrow(fmtData)) + 1L)[fmtData[ , "wells"] %in%
+  well_rows <- ((seq_len(nrow(fmtData))) + 1L)[fmtData[ , "wells"] %in%
                               low_positive_controls_df$wells]
   to_repeat <- data.frame(
     row = rep(well_rows, ncol(fmtData)),
-    col = rep(1:ncol(fmtData), each = length(well_rows)))
+    col = rep(seq_len(ncol(fmtData)), each = length(well_rows)))
 
   positive <- positive[complete.cases(positive), ]
   indeterminate <- indeterminate[complete.cases(indeterminate), ]

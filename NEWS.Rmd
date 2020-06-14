@@ -11,6 +11,16 @@ output:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+# snprcspf 1.1.7.9000 (20200613)
+-   Added some better description of fmt_luminex_results().
+    
+# snprcspf 1.1.7 (20200612)
+-   Corrected bug in fmt_luminex_results() that was saving the data
+    used to control formating of the worksheet to the worksheet instead of
+    the dataframe that was supposed to be written. Some refactoring of code
+    was also done to make the side effects of the function more easily 
+    understood.
+
 # snprcspf 1.1.6 (20200406)
 -   Changed default blank replacement from "." to " " in calls to read.xlsx().
     The period were causing the column match routines to fail.
